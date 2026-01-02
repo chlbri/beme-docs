@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as CountingRouteImport } from './routes/counting'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ComponentsBorderHoverRouteImport } from './routes/components/border-hover'
 
 const CountingRoute = CountingRouteImport.update({
   id: '/counting',
@@ -22,31 +23,40 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComponentsBorderHoverRoute = ComponentsBorderHoverRouteImport.update({
+  id: '/components/border-hover',
+  path: '/components/border-hover',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/counting': typeof CountingRoute
+  '/components/border-hover': typeof ComponentsBorderHoverRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/counting': typeof CountingRoute
+  '/components/border-hover': typeof ComponentsBorderHoverRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/counting': typeof CountingRoute
+  '/components/border-hover': typeof ComponentsBorderHoverRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/counting'
+  fullPaths: '/' | '/counting' | '/components/border-hover'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/counting'
-  id: '__root__' | '/' | '/counting'
+  to: '/' | '/counting' | '/components/border-hover'
+  id: '__root__' | '/' | '/counting' | '/components/border-hover'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CountingRoute: typeof CountingRoute
+  ComponentsBorderHoverRoute: typeof ComponentsBorderHoverRoute
 }
 
 declare module '@tanstack/solid-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/solid-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/border-hover': {
+      id: '/components/border-hover'
+      path: '/components/border-hover'
+      fullPath: '/components/border-hover'
+      preLoaderRoute: typeof ComponentsBorderHoverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CountingRoute: CountingRoute,
+  ComponentsBorderHoverRoute: ComponentsBorderHoverRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
