@@ -13,6 +13,7 @@ import { Route as StatesRouteImport } from './routes/states'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ComponentsBorderHoverRouteImport } from './routes/components/border-hover'
 import { Route as GraphicCharterAttemp1IndexRouteImport } from './routes/graphic-charter/attemp1/index'
+import { Route as ComponentsLogin_beauty1IndexRouteImport } from './routes/components/login_beauty1/index'
 import { Route as Cases_studiesEvent_loopIndexRouteImport } from './routes/cases_studies/event_loop/index'
 
 const StatesRoute = StatesRouteImport.update({
@@ -36,6 +37,12 @@ const GraphicCharterAttemp1IndexRoute =
     path: '/graphic-charter/attemp1/',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ComponentsLogin_beauty1IndexRoute =
+  ComponentsLogin_beauty1IndexRouteImport.update({
+    id: '/components/login_beauty1/',
+    path: '/components/login_beauty1/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const Cases_studiesEvent_loopIndexRoute =
   Cases_studiesEvent_loopIndexRouteImport.update({
     id: '/cases_studies/event_loop/',
@@ -48,6 +55,7 @@ export interface FileRoutesByFullPath {
   '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
   '/cases_studies/event_loop': typeof Cases_studiesEvent_loopIndexRoute
+  '/components/login_beauty1': typeof ComponentsLogin_beauty1IndexRoute
   '/graphic-charter/attemp1': typeof GraphicCharterAttemp1IndexRoute
 }
 export interface FileRoutesByTo {
@@ -55,6 +63,7 @@ export interface FileRoutesByTo {
   '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
   '/cases_studies/event_loop': typeof Cases_studiesEvent_loopIndexRoute
+  '/components/login_beauty1': typeof ComponentsLogin_beauty1IndexRoute
   '/graphic-charter/attemp1': typeof GraphicCharterAttemp1IndexRoute
 }
 export interface FileRoutesById {
@@ -63,6 +72,7 @@ export interface FileRoutesById {
   '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
   '/cases_studies/event_loop/': typeof Cases_studiesEvent_loopIndexRoute
+  '/components/login_beauty1/': typeof ComponentsLogin_beauty1IndexRoute
   '/graphic-charter/attemp1/': typeof GraphicCharterAttemp1IndexRoute
 }
 export interface FileRouteTypes {
@@ -72,6 +82,7 @@ export interface FileRouteTypes {
     | '/states'
     | '/components/border-hover'
     | '/cases_studies/event_loop'
+    | '/components/login_beauty1'
     | '/graphic-charter/attemp1'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -79,6 +90,7 @@ export interface FileRouteTypes {
     | '/states'
     | '/components/border-hover'
     | '/cases_studies/event_loop'
+    | '/components/login_beauty1'
     | '/graphic-charter/attemp1'
   id:
     | '__root__'
@@ -86,6 +98,7 @@ export interface FileRouteTypes {
     | '/states'
     | '/components/border-hover'
     | '/cases_studies/event_loop/'
+    | '/components/login_beauty1/'
     | '/graphic-charter/attemp1/'
   fileRoutesById: FileRoutesById
 }
@@ -94,6 +107,7 @@ export interface RootRouteChildren {
   StatesRoute: typeof StatesRoute
   ComponentsBorderHoverRoute: typeof ComponentsBorderHoverRoute
   Cases_studiesEvent_loopIndexRoute: typeof Cases_studiesEvent_loopIndexRoute
+  ComponentsLogin_beauty1IndexRoute: typeof ComponentsLogin_beauty1IndexRoute
   GraphicCharterAttemp1IndexRoute: typeof GraphicCharterAttemp1IndexRoute
 }
 
@@ -127,6 +141,13 @@ declare module '@tanstack/solid-router' {
       preLoaderRoute: typeof GraphicCharterAttemp1IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/components/login_beauty1/': {
+      id: '/components/login_beauty1/'
+      path: '/components/login_beauty1'
+      fullPath: '/components/login_beauty1'
+      preLoaderRoute: typeof ComponentsLogin_beauty1IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cases_studies/event_loop/': {
       id: '/cases_studies/event_loop/'
       path: '/cases_studies/event_loop'
@@ -142,6 +163,7 @@ const rootRouteChildren: RootRouteChildren = {
   StatesRoute: StatesRoute,
   ComponentsBorderHoverRoute: ComponentsBorderHoverRoute,
   Cases_studiesEvent_loopIndexRoute: Cases_studiesEvent_loopIndexRoute,
+  ComponentsLogin_beauty1IndexRoute: ComponentsLogin_beauty1IndexRoute,
   GraphicCharterAttemp1IndexRoute: GraphicCharterAttemp1IndexRoute,
 }
 export const routeTree = rootRouteImport

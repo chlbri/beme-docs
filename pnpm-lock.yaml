@@ -8,8 +8,8 @@ importers:
   .:
     dependencies:
       '@bemedev/app-ts':
-        specifier: ^1.6.7
-        version: 1.6.7(@bemedev/types@0.4.2)(vitest@4.0.16)
+        specifier: ^1.6.8
+        version: 1.6.8(@bemedev/types@0.4.2)(vitest@4.0.16)
       '@bemedev/decompose':
         specifier: ^1.5.0
         version: 1.5.0(@bemedev/types@0.4.2)(vitest@4.0.16)
@@ -88,7 +88,7 @@ importers:
     devDependencies:
       '@bemedev/app-cli':
         specifier: ^0.1.7
-        version: 0.1.7(@bemedev/app-ts@1.6.7(@bemedev/types@0.4.2)(vitest@4.0.16))(@bemedev/types@0.4.2)(vitest@4.0.16)
+        version: 0.1.7(@bemedev/app-ts@1.6.8(@bemedev/types@0.4.2)(vitest@4.0.16))(@bemedev/types@0.4.2)(vitest@4.0.16)
       '@bemedev/build-tests':
         specifier: ^0.1.2
         version: 0.1.2(vitest@4.0.16)
@@ -156,8 +156,8 @@ importers:
         specifier: ^13.0.0
         version: 13.0.0
       globals:
-        specifier: ^16.5.0
-        version: 16.5.0
+        specifier: ^17.0.0
+        version: 17.0.0
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -363,10 +363,10 @@ packages:
     peerDependencies:
       '@bemedev/app-ts': ^0.9.20
 
-  '@bemedev/app-ts@1.6.7':
+  '@bemedev/app-ts@1.6.8':
     resolution:
       {
-        integrity: sha512-VBZ2YfY4wK+i2czeGKkNHFblKPSpxA47I0Q4RcbeD1FTtLHUz5SvxNvI6aV3gIkF3SzyFL2/Tp12MlJxBfAWZQ==,
+        integrity: sha512-TesiYCdCSvqxX/OgU4DxpJF0Z5CqxmMxrFOydDR0buqlBYaORW4GbmjFbtFJyLoZh70rOLsaRAvssoxvMSDuRw==,
       }
     engines: { node: '>=22' }
 
@@ -563,16 +563,16 @@ packages:
         integrity: sha512-q3VTHl44ad8T2Tw2SpeAvghdGOjlnLPDNO2cpOxwMrBE/PVas6geWpbpIgrM+czOCH0yejp0yi8OaTuB+NU40Q==,
       }
 
-  '@emnapi/core@1.7.1':
+  '@emnapi/core@1.8.0':
     resolution:
       {
-        integrity: sha512-o1uhUASyo921r2XtHYOHy7gdkGLge8ghBEQHMWmyJFoXlpU58kIrhhN3w26lpQb6dspetweapMn2CSNwQ8I4wg==,
+        integrity: sha512-ryJnSmj4UhrGLZZPJ6PKVb4wNPAIkW6iyLy+0TRwazd3L1u0wzMe8RfqevAh2HbcSkoeLiSYnOVDOys4JSGYyg==,
       }
 
-  '@emnapi/runtime@1.7.1':
+  '@emnapi/runtime@1.8.0':
     resolution:
       {
-        integrity: sha512-PVtJr5CmLwYAU9PZDMITZoR5iAOShYREoR45EyyLrbntV50mdePTgUn4AmOw90Ifcj+x2kRjdzr1HP3RrNiHGA==,
+        integrity: sha512-Z82FDl1ByxqPEPrAYYeTQVlx2FSHPe1qwX465c+96IRS3fTdSYRoJcRxg3g2fEG5I69z1dSEWQlNRRr0/677mg==,
       }
 
   '@emnapi/wasi-threads@1.1.0':
@@ -1049,10 +1049,10 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@eslint-community/eslint-utils@4.9.0':
+  '@eslint-community/eslint-utils@4.9.1':
     resolution:
       {
-        integrity: sha512-ayVFHdtZ+hsq1t2Dy24wCmGXGe4q9Gu3smhLYALJrr473ZH27MsnSL+LKUlimp4BWJqMDMLmPpx/Q9R3OAlL4g==,
+        integrity: sha512-phrYmNiYppR7znFEdqgfWHXR6NCkZEK7hwWDHZUjit/2/U0r6XvkDl0SYnoM51Hq7FhCGdLDT6zxCCOY1hexsQ==,
       }
     engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
     peerDependencies:
@@ -3826,6 +3826,8 @@ packages:
       {
         integrity: sha512-uULa1sSIHgXKGCqJ/pA0zsnzbHlVnuq7g8O2fkHokWFNwEGIhh5lAJlxZa1POG5En5ba7AU4KcBAvGQWMMf8rg==,
       }
+    deprecated:
+      This package has moved to simply be 'dax' instead of 'dax-sh'
 
   db0@0.3.4:
     resolution:
@@ -4221,10 +4223,10 @@ packages:
     engines: { node: '>=4' }
     hasBin: true
 
-  esquery@1.6.0:
+  esquery@1.7.0:
     resolution:
       {
-        integrity: sha512-ca9pw9fomFcKPvFLXhBKUK90ZvGibiGOvRJNbjljY7s7uq/5YO4BOzcYtJqExdx99rF6aAcnRxHmcUHcz6sQsg==,
+        integrity: sha512-Ap6G0WQwcU/LHsvLwON1fAQX9Zp0A2Y6Y/cJBl9r/JbW90Zyg4/zbG6zzKa2OTALELarYHmKu0GhpM5EO+7T0g==,
       }
     engines: { node: '>=0.10' }
 
@@ -4602,10 +4604,10 @@ packages:
       }
     engines: { node: '>=18' }
 
-  globals@16.5.0:
+  globals@17.0.0:
     resolution:
       {
-        integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ==,
+        integrity: sha512-gv5BeD2EssA793rlFWVPMMCqefTlpusw6/2TbAVMy0FzcG8wKJn4O+NqJ4+XWmmwrayJgw5TzrmWjFgmz1XPqw==,
       }
     engines: { node: '>=18' }
 
@@ -7350,10 +7352,10 @@ packages:
         integrity: sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw==,
       }
 
-  ts-api-utils@2.3.0:
+  ts-api-utils@2.4.0:
     resolution:
       {
-        integrity: sha512-6eg3Y9SF7SsAvGzRHQvvc1skDAhwI4YQ32ui1scxD1Ccr0G5qIIbUBT3pFTKX8kmWIQClHobtUdNuaBgwdfdWg==,
+        integrity: sha512-3TaVTaAv2gTiMB35i3FiGJaRfwb3Pyn/j3m/bfAvGe8FB7CF6u+LMYqYlDh7reQf7UNvoTvdfAqHGmPGOSsPmA==,
       }
     engines: { node: '>=18.12' }
     peerDependencies:
@@ -8174,10 +8176,10 @@ packages:
         integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==,
       }
 
-  zod@4.2.1:
+  zod@4.3.4:
     resolution:
       {
-        integrity: sha512-0wZ1IRqGGhMP76gLqz8EyfBXKk0J2qo2+H3fi4mcUP/KtTocoX08nmIAHl1Z2kJIZbZee8KOpBCSNPRgauucjw==,
+        integrity: sha512-Zw/uYiiyF6pUT1qmKbZziChgNPRu+ZRneAsMUDU6IwmXdWt5JwcUfy2bvLOCUtz5UniaN/Zx5aFttZYbYc7O/A==,
       }
 
   zwitch@2.0.4:
@@ -8305,9 +8307,9 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@bemedev/app-cli@0.1.7(@bemedev/app-ts@1.6.7(@bemedev/types@0.4.2)(vitest@4.0.16))(@bemedev/types@0.4.2)(vitest@4.0.16)':
+  '@bemedev/app-cli@0.1.7(@bemedev/app-ts@1.6.8(@bemedev/types@0.4.2)(vitest@4.0.16))(@bemedev/types@0.4.2)(vitest@4.0.16)':
     dependencies:
-      '@bemedev/app-ts': 1.6.7(@bemedev/types@0.4.2)(vitest@4.0.16)
+      '@bemedev/app-ts': 1.6.8(@bemedev/types@0.4.2)(vitest@4.0.16)
       '@bemedev/decompose': 1.5.0(@bemedev/types@0.4.2)(vitest@4.0.16)
       chokidar: 4.0.3
       cmd-ts: 0.14.3
@@ -8319,7 +8321,7 @@ snapshots:
       - supports-color
       - vitest
 
-  '@bemedev/app-ts@1.6.7(@bemedev/types@0.4.2)(vitest@4.0.16)':
+  '@bemedev/app-ts@1.6.8(@bemedev/types@0.4.2)(vitest@4.0.16)':
     dependencies:
       '@bemedev/basifun': 0.5.3
       '@bemedev/boolean-recursive': 0.0.3
@@ -8465,13 +8467,13 @@ snapshots:
       '@deno/shim-deno-test': 0.5.0
       which: 4.0.0
 
-  '@emnapi/core@1.7.1':
+  '@emnapi/core@1.8.0':
     dependencies:
       '@emnapi/wasi-threads': 1.1.0
       tslib: 2.8.1
     optional: true
 
-  '@emnapi/runtime@1.7.1':
+  '@emnapi/runtime@1.8.0':
     dependencies:
       tslib: 2.8.1
     optional: true
@@ -8637,7 +8639,7 @@ snapshots:
   '@esbuild/win32-x64@0.27.2':
     optional: true
 
-  '@eslint-community/eslint-utils@4.9.0(eslint@9.39.2(jiti@2.6.1))':
+  '@eslint-community/eslint-utils@4.9.1(eslint@9.39.2(jiti@2.6.1))':
     dependencies:
       eslint: 9.39.2(jiti@2.6.1)
       eslint-visitor-keys: 3.4.3
@@ -8833,8 +8835,8 @@ snapshots:
 
   '@napi-rs/wasm-runtime@1.1.1':
     dependencies:
-      '@emnapi/core': 1.7.1
-      '@emnapi/runtime': 1.7.1
+      '@emnapi/core': 1.8.0
+      '@emnapi/runtime': 1.8.0
       '@tybys/wasm-util': 0.10.1
     optional: true
 
@@ -9788,7 +9790,7 @@ snapshots:
       eslint: 9.39.2(jiti@2.6.1)
       ignore: 7.0.5
       natural-compare: 1.4.0
-      ts-api-utils: 2.3.0(typescript@5.9.3)
+      ts-api-utils: 2.4.0(typescript@5.9.3)
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
@@ -9830,7 +9832,7 @@ snapshots:
       '@typescript-eslint/utils': 8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       debug: 4.4.3
       eslint: 9.39.2(jiti@2.6.1)
-      ts-api-utils: 2.3.0(typescript@5.9.3)
+      ts-api-utils: 2.4.0(typescript@5.9.3)
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
@@ -9847,14 +9849,14 @@ snapshots:
       minimatch: 9.0.5
       semver: 7.7.3
       tinyglobby: 0.2.15
-      ts-api-utils: 2.3.0(typescript@5.9.3)
+      ts-api-utils: 2.4.0(typescript@5.9.3)
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
 
   '@typescript-eslint/utils@8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
     dependencies:
-      '@eslint-community/eslint-utils': 4.9.0(eslint@9.39.2(jiti@2.6.1))
+      '@eslint-community/eslint-utils': 4.9.1(eslint@9.39.2(jiti@2.6.1))
       '@typescript-eslint/scope-manager': 8.51.0
       '@typescript-eslint/types': 8.51.0
       '@typescript-eslint/typescript-estree': 8.51.0(typescript@5.9.3)
@@ -10615,7 +10617,7 @@ snapshots:
 
   eslint@9.39.2(jiti@2.6.1):
     dependencies:
-      '@eslint-community/eslint-utils': 4.9.0(eslint@9.39.2(jiti@2.6.1))
+      '@eslint-community/eslint-utils': 4.9.1(eslint@9.39.2(jiti@2.6.1))
       '@eslint-community/regexpp': 4.12.2
       '@eslint/config-array': 0.21.1
       '@eslint/config-helpers': 0.4.2
@@ -10635,7 +10637,7 @@ snapshots:
       eslint-scope: 8.4.0
       eslint-visitor-keys: 4.2.1
       espree: 10.4.0
-      esquery: 1.6.0
+      esquery: 1.7.0
       esutils: 2.0.3
       fast-deep-equal: 3.1.3
       file-entry-cache: 8.0.0
@@ -10662,7 +10664,7 @@ snapshots:
 
   esprima@4.0.1: {}
 
-  esquery@1.6.0:
+  esquery@1.7.0:
     dependencies:
       estraverse: 5.3.0
 
@@ -10871,7 +10873,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@16.5.0: {}
+  globals@17.0.0: {}
 
   globby@11.1.0:
     dependencies:
@@ -12654,7 +12656,7 @@ snapshots:
 
   trough@2.2.0: {}
 
-  ts-api-utils@2.3.0(typescript@5.9.3):
+  ts-api-utils@2.4.0(typescript@5.9.3):
     dependencies:
       typescript: 5.9.3
 
@@ -12916,7 +12918,7 @@ snapshots:
       unenv: 1.10.0
       unstorage: 1.17.3(db0@0.3.4)(ioredis@5.8.2)
       vite: 6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
-      zod: 4.2.1
+      zod: 4.3.4
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -13174,6 +13176,6 @@ snapshots:
 
   zod@3.25.76: {}
 
-  zod@4.2.1: {}
+  zod@4.3.4: {}
 
   zwitch@2.0.4: {}

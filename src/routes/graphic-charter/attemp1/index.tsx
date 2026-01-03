@@ -157,9 +157,7 @@ export const Route = createFileRoute('/graphic-charter/attemp1/')({
 
         {/* Footer */}
         <div class='bg-[#2C5364] text-white py-6 px-6 rounded-b-lg mt-0 text-center'>
-          <h3 class='text-xl font-bold'>
-            beme.docs, tout le code
-          </h3>
+          <h3 class='text-xl font-bold'>beme.docs, tout le code</h3>
         </div>
       </div>
     </div>

@@ -6,3 +6,4 @@ export * from './reducer';
 export * from './TypingText';
 export * from './BorderHover';
 export * from './Footer';
+export * from './Input';

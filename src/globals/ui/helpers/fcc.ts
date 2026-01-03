@@ -1,17 +1,23 @@
-import Color from 'color';
+import Color, { type ColorLike } from 'color';
 
-const fcc = (color: string) => {
+export const CONTRAST_OFFSET = 2.5;
+
+const _contrastByLight = (color: ColorLike) => {
   const white = Color('white');
   const _color = Color(color).contrast(white);
-  return _color > 2 ? 'white' : 'black';
+  return _color > CONTRAST_OFFSET;
 };
 
-export const CONTRAST_OFFSET = 1.75;
+const fcc = (color: ColorLike) => {
+  return _contrastByLight(color) ? 'white' : 'black';
+};
+
+fcc.contrastByLight = _contrastByLight;
 
 fcc.custom = (
-  color: string,
-  lightColor = 'white',
-  darkColor = 'black',
+  color: ColorLike,
+  lightColor: ColorLike = 'white',
+  darkColor: ColorLike = 'black',
 ) => {
   const light = Color(lightColor);
   const _color = Color(color).contrast(light);
