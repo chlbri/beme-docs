@@ -3,7 +3,7 @@ import { createFileRoute } from '@tanstack/solid-router';
 import Counter from '~ui/molecules/Counter';
 import { reduceComponent } from '~ui/molecules/reducer';
 
-export const Route = createFileRoute('/counting')({
+export const Route = createFileRoute('/states')({
   // Test data from loader
   loader: () => 15,
   component: () => {

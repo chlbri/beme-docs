@@ -9,13 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as CountingRouteImport } from './routes/counting'
+import { Route as StatesRouteImport } from './routes/states'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ComponentsBorderHoverRouteImport } from './routes/components/border-hover'
+import { Route as Cases_studiesEvent_loopIndexRouteImport } from './routes/cases_studies/event_loop/index'
 
-const CountingRoute = CountingRouteImport.update({
-  id: '/counting',
-  path: '/counting',
+const StatesRoute = StatesRouteImport.update({
+  id: '/states',
+  path: '/states',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -28,44 +29,63 @@ const ComponentsBorderHoverRoute = ComponentsBorderHoverRouteImport.update({
   path: '/components/border-hover',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Cases_studiesEvent_loopIndexRoute =
+  Cases_studiesEvent_loopIndexRouteImport.update({
+    id: '/cases_studies/event_loop/',
+    path: '/cases_studies/event_loop/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/counting': typeof CountingRoute
+  '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
+  '/cases_studies/event_loop': typeof Cases_studiesEvent_loopIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/counting': typeof CountingRoute
+  '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
+  '/cases_studies/event_loop': typeof Cases_studiesEvent_loopIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/counting': typeof CountingRoute
+  '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
+  '/cases_studies/event_loop/': typeof Cases_studiesEvent_loopIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/counting' | '/components/border-hover'
+  fullPaths:
+    | '/'
+    | '/states'
+    | '/components/border-hover'
+    | '/cases_studies/event_loop'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/counting' | '/components/border-hover'
-  id: '__root__' | '/' | '/counting' | '/components/border-hover'
+  to: '/' | '/states' | '/components/border-hover' | '/cases_studies/event_loop'
+  id:
+    | '__root__'
+    | '/'
+    | '/states'
+    | '/components/border-hover'
+    | '/cases_studies/event_loop/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CountingRoute: typeof CountingRoute
+  StatesRoute: typeof StatesRoute
   ComponentsBorderHoverRoute: typeof ComponentsBorderHoverRoute
+  Cases_studiesEvent_loopIndexRoute: typeof Cases_studiesEvent_loopIndexRoute
 }
 
 declare module '@tanstack/solid-router' {
   interface FileRoutesByPath {
-    '/counting': {
-      id: '/counting'
-      path: '/counting'
-      fullPath: '/counting'
-      preLoaderRoute: typeof CountingRouteImport
+    '/states': {
+      id: '/states'
+      path: '/states'
+      fullPath: '/states'
+      preLoaderRoute: typeof StatesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -82,13 +102,21 @@ declare module '@tanstack/solid-router' {
       preLoaderRoute: typeof ComponentsBorderHoverRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cases_studies/event_loop/': {
+      id: '/cases_studies/event_loop/'
+      path: '/cases_studies/event_loop'
+      fullPath: '/cases_studies/event_loop'
+      preLoaderRoute: typeof Cases_studiesEvent_loopIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CountingRoute: CountingRoute,
+  StatesRoute: StatesRoute,
   ComponentsBorderHoverRoute: ComponentsBorderHoverRoute,
+  Cases_studiesEvent_loopIndexRoute: Cases_studiesEvent_loopIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

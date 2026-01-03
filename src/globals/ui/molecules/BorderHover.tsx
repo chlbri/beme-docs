@@ -1,36 +1,42 @@
 import { createSignal, type ParentComponent } from 'solid-js';
+import { cn } from '../cn/utils';
 
-type Props = {
+export type BorderHoverProps = {
   alt: string;
   /**
    * in pixels
    */
   width?: number;
+  class?: string;
 };
 
 //[background: radial-gradient(circle 24px at top left, #0000, 98%, #fff)]
 
-export const BorderHover: ParentComponent<Props> = props => {
+export const BorderHover: ParentComponent<BorderHoverProps> = props => {
   const firstLetter = props.alt.charAt(0);
   const BASE_WIDTH = 800;
   const [_alt, _setAlt] = createSignal(firstLetter);
   const width = props.width ?? BASE_WIDTH;
   const percent = (value: number) => (value / BASE_WIDTH) * width;
-  const ANIMATION_DURATION = 500;
-  const TEXT_ANIMATION_DURATION = 500 / 2.5;
+  const ANIMATION_DURATION = 350;
+  const TEXT_ANIMATION_DURATION = ANIMATION_DURATION / 2.5;
 
   return (
     <div
-      class='relative aspect-4/3 bg-green-600 grid content-center place-items-center px-3'
+      class={cn('bg-green-600 px-5 text-gray-50', props.class)}
       style={{
         'background-size': '100%',
         width: `${width}px`,
-        'border-radius': `${percent(12)}px`,
+        'border-radius': `${percent(20)}px`,
+        'aspect-ratio': '4 / 3',
+        'align-content': 'center',
+        'place-items': 'center',
+        position: 'relative',
       }}
     >
       {props.children}
       <div
-        class='absolute h-[14.28%] w-[10%] bottom-0 right-0 grid px-2 place-items-center ease-in-out transition-all duration-500 hover:w-[60%] group cursor-pointer outline-white'
+        class='absolute h-[14.28%] w-[10%] bottom-0 right-0 grid px-2 place-items-center ease-out transition-all duration-500 hover:w-[60%] group cursor-pointer outline-white'
         onMouseOver={() => {
           setTimeout(() => {
             _setAlt(props.alt);
@@ -45,7 +51,7 @@ export const BorderHover: ParentComponent<Props> = props => {
           'transition-duration': `${ANIMATION_DURATION}ms`,
           'animation-duration': `${ANIMATION_DURATION}ms`,
           outline: `${percent(10)}px solid white`,
-          'border-radius': `${percent(12)}px`,
+          'border-radius': `${percent(20)}px`,
         }}
       >
         <div
@@ -65,7 +71,7 @@ export const BorderHover: ParentComponent<Props> = props => {
             right: `-${percent(6.5)}px`,
           }}
         />
-        <span class='grid text-white place-items-center overflow-hidden tracking-widest group-hover:tracking-wide font-bold w-10 group-hover:w-full text-nowrap'>
+        <span class='grid place-items-center overflow-hidden tracking-widest group-hover:tracking-wide font-bold w-10 group-hover:w-full text-nowrap'>
           {_alt()}
         </span>
       </div>
