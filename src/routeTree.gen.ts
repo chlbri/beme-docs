@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as StatesRouteImport } from './routes/states'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ComponentsBorderHoverRouteImport } from './routes/components/border-hover'
+import { Route as GraphicCharterAttemp1IndexRouteImport } from './routes/graphic-charter/attemp1/index'
 import { Route as Cases_studiesEvent_loopIndexRouteImport } from './routes/cases_studies/event_loop/index'
 
 const StatesRoute = StatesRouteImport.update({
@@ -29,6 +30,12 @@ const ComponentsBorderHoverRoute = ComponentsBorderHoverRouteImport.update({
   path: '/components/border-hover',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GraphicCharterAttemp1IndexRoute =
+  GraphicCharterAttemp1IndexRouteImport.update({
+    id: '/graphic-charter/attemp1/',
+    path: '/graphic-charter/attemp1/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const Cases_studiesEvent_loopIndexRoute =
   Cases_studiesEvent_loopIndexRouteImport.update({
     id: '/cases_studies/event_loop/',
@@ -41,12 +48,14 @@ export interface FileRoutesByFullPath {
   '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
   '/cases_studies/event_loop': typeof Cases_studiesEvent_loopIndexRoute
+  '/graphic-charter/attemp1': typeof GraphicCharterAttemp1IndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
   '/cases_studies/event_loop': typeof Cases_studiesEvent_loopIndexRoute
+  '/graphic-charter/attemp1': typeof GraphicCharterAttemp1IndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -54,6 +63,7 @@ export interface FileRoutesById {
   '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
   '/cases_studies/event_loop/': typeof Cases_studiesEvent_loopIndexRoute
+  '/graphic-charter/attemp1/': typeof GraphicCharterAttemp1IndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -62,14 +72,21 @@ export interface FileRouteTypes {
     | '/states'
     | '/components/border-hover'
     | '/cases_studies/event_loop'
+    | '/graphic-charter/attemp1'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/states' | '/components/border-hover' | '/cases_studies/event_loop'
+  to:
+    | '/'
+    | '/states'
+    | '/components/border-hover'
+    | '/cases_studies/event_loop'
+    | '/graphic-charter/attemp1'
   id:
     | '__root__'
     | '/'
     | '/states'
     | '/components/border-hover'
     | '/cases_studies/event_loop/'
+    | '/graphic-charter/attemp1/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +94,7 @@ export interface RootRouteChildren {
   StatesRoute: typeof StatesRoute
   ComponentsBorderHoverRoute: typeof ComponentsBorderHoverRoute
   Cases_studiesEvent_loopIndexRoute: typeof Cases_studiesEvent_loopIndexRoute
+  GraphicCharterAttemp1IndexRoute: typeof GraphicCharterAttemp1IndexRoute
 }
 
 declare module '@tanstack/solid-router' {
@@ -102,6 +120,13 @@ declare module '@tanstack/solid-router' {
       preLoaderRoute: typeof ComponentsBorderHoverRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/graphic-charter/attemp1/': {
+      id: '/graphic-charter/attemp1/'
+      path: '/graphic-charter/attemp1'
+      fullPath: '/graphic-charter/attemp1'
+      preLoaderRoute: typeof GraphicCharterAttemp1IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cases_studies/event_loop/': {
       id: '/cases_studies/event_loop/'
       path: '/cases_studies/event_loop'
@@ -117,6 +142,7 @@ const rootRouteChildren: RootRouteChildren = {
   StatesRoute: StatesRoute,
   ComponentsBorderHoverRoute: ComponentsBorderHoverRoute,
   Cases_studiesEvent_loopIndexRoute: Cases_studiesEvent_loopIndexRoute,
+  GraphicCharterAttemp1IndexRoute: GraphicCharterAttemp1IndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

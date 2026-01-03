@@ -4,7 +4,7 @@ export * from './createTyping';
 export * from './debounce';
 export * from './focus';
 export * from './intersect';
-export * from './lang';
+// export * from './lang';
 export * from './links';
 export * from './ressource';
 export * from './scroll';

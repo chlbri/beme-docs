@@ -8,37 +8,31 @@ import {
 const DATA: (BorderHoverProps & { children: string })[] = [
   {
     alt: 'Stunning visual element',
-    width: 500,
     class: 'bg-slate-200 text-gray-500',
     children: 'Elegant design showcased here',
   },
   {
     alt: 'Modern UI element',
-    width: 500,
     class: 'bg-zinc-400',
     children: 'Sophisticated visual component',
   },
   {
     alt: 'Attractive display section',
-    width: 500,
     class: 'bg-yellow-500',
     children: 'Outstanding presentation element',
   },
   {
     alt: 'Creative presentation block',
-    width: 500,
     class: 'bg-blue-400',
     children: 'Impressive feature display',
   },
   {
     alt: 'Amazing interface component',
-    width: 500,
     class: 'bg-orange-800',
     children: 'Beautiful component to show publicly',
   },
   {
     alt: 'Remarkable interface piece',
-    width: 500,
     children: 'Exceptional component showcase',
   },
 ];

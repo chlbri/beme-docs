@@ -250,57 +250,35 @@ export const EventLoop: Component<Props> = props => {
             {/* Code Editor */}
             <div class='bg-[#161b22] border border-gray-700 rounded-lg overflow-hidden flex flex-col h-1/2 w-full'>
               <div class='bg-[#0d1117] px-3 py-2 border-b border-gray-700 text-xs text-gray-400 flex items-center justify-between'>
-                <button
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  stroke-width='5'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
                   class='size-4 rounded-full bg-red-500/20 border border-red-500/50 p-0.5 hover:scale-125 transition-transform duration-200 ease-in-out active:scale-95 cursor-pointer'
                   onClick={eraseAllItems}
                 >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    viewBox='0 0 24 24'
-                    fill='none'
-                    stroke='currentColor'
-                    stroke-width='5'
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    class='w-full h-full'
-                  >
-                    <line x1='18' y1='6' x2='6' y2='18' />
-                    <line x1='6' y1='6' x2='18' y2='18' />
-                  </svg>
-                </button>
-
+                  <line x1='18' y1='6' x2='6' y2='18' />
+                  <line x1='6' y1='6' x2='18' y2='18' />
+                </svg>
                 <span class='font-bold'>script.js</span>
-                <div class='flex space-x-3'>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    viewBox='0 0 24 24'
-                    class='size-4 rounded-full bg-yellow-500/20 border border-yellow-500/50 p-0.5 hover:scale-125 transition-transform duration-200 ease-in-out cursor-pointer active:scale-95 stroke-gray-300'
-                    onClick={resetItems}
-                  >
-                    <g fill='none' stroke='currentColor' stroke-width='3'>
-                      <path
-                        d='m13 8.768l6.097-4.46C20.399 3.411 22 4.58 22 6.426v11.148c0 1.847-1.6 3.015-2.903 2.118L13 15.232'
-                        opacity='.5'
-                      />
-                      <path d='M2.921 10.147c-1.228.807-1.228 2.899 0 3.706l7.418 4.877c1.194.785 2.661-.237 2.661-1.853V7.123c0-1.616-1.467-2.638-2.661-1.853z' />
-                    </g>
-                  </svg>
-                  <button class='size-4 rounded-full bg-blue-500/20 border border-blue-500/50 p-0.25 hover:scale-125 transition-transform duration-200 ease-in-out active:scale-95 cursor-pointer'>
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      viewBox='0 0 24 24'
-                      fill='none'
-                      stroke='currentColor'
-                      stroke-width='3'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      class='w-full h-full'
-                    >
-                      <line x1='12' y1='6' x2='12' y2='18' />
-                      <line x1='6' y1='12' x2='18' y2='12' />
-                    </svg>
-                  </button>
-                </div>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 24 24'
+                  class='size-4 rounded-full bg-yellow-500/20 border border-yellow-500/50 p-0.5 hover:scale-125 transition-transform duration-200 ease-in-out cursor-pointer active:scale-95 stroke-gray-300'
+                  onClick={resetItems}
+                >
+                  <g fill='none' stroke='currentColor' stroke-width='3'>
+                    <path
+                      d='m13 8.768l6.097-4.46C20.399 3.411 22 4.58 22 6.426v11.148c0 1.847-1.6 3.015-2.903 2.118L13 15.232'
+                      opacity='.5'
+                    />
+                    <path d='M2.921 10.147c-1.228.807-1.228 2.899 0 3.706l7.418 4.877c1.194.785 2.661-.237 2.661-1.853V7.123c0-1.616-1.467-2.638-2.661-1.853z' />
+                  </g>
+                </svg>
               </div>
               <div
                 class='p-3 font-mono text-2xs leading-relaxed overflow-auto relative flex-1 text-start flex flex-col select-none'

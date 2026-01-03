@@ -8,18 +8,23 @@ export type BorderHoverProps = {
    */
   width?: number;
   class?: string;
+  altClass?: string;
 };
 
 //[background: radial-gradient(circle 24px at top left, #0000, 98%, #fff)]
 
+const BASE_WIDTH = 800;
+const DEFAULT_WIDTH = 500;
+const ANIMATION_DURATION = 350;
+const TEXT_ANIMATION_DURATION = ANIMATION_DURATION / 2.5;
+
 export const BorderHover: ParentComponent<BorderHoverProps> = props => {
+  // #region Properties
   const firstLetter = props.alt.charAt(0);
-  const BASE_WIDTH = 800;
   const [_alt, _setAlt] = createSignal(firstLetter);
-  const width = props.width ?? BASE_WIDTH;
   const percent = (value: number) => (value / BASE_WIDTH) * width;
-  const ANIMATION_DURATION = 350;
-  const TEXT_ANIMATION_DURATION = ANIMATION_DURATION / 2.5;
+  const width = props.width ?? DEFAULT_WIDTH;
+  // #endregion
 
   return (
     <div
@@ -28,7 +33,7 @@ export const BorderHover: ParentComponent<BorderHoverProps> = props => {
         'background-size': '100%',
         width: `${width}px`,
         'border-radius': `${percent(20)}px`,
-        'aspect-ratio': '4 / 3',
+        'aspect-ratio': '3/2',
         'align-content': 'center',
         'place-items': 'center',
         position: 'relative',
@@ -36,7 +41,7 @@ export const BorderHover: ParentComponent<BorderHoverProps> = props => {
     >
       {props.children}
       <div
-        class='absolute h-[14.28%] w-[10%] bottom-0 right-0 grid px-2 place-items-center ease-out transition-all duration-500 hover:w-[60%] group cursor-pointer outline-white'
+        class='absolute h-[15%] w-[10%] bottom-0 right-0 grid px-2 place-items-center ease-out transition-all duration-500 hover:w-[60%] group cursor-pointer outline-white'
         onMouseOver={() => {
           setTimeout(() => {
             _setAlt(props.alt);
@@ -71,7 +76,15 @@ export const BorderHover: ParentComponent<BorderHoverProps> = props => {
             right: `-${percent(6.5)}px`,
           }}
         />
-        <span class='grid place-items-center overflow-hidden tracking-widest group-hover:tracking-wide font-bold w-10 group-hover:w-full text-nowrap'>
+        <span
+          class={cn(
+            'grid place-items-center overflow-hidden tracking-widest group-hover:tracking-wide w-10 group-hover:w-full text-nowrap',
+            props.altClass,
+          )}
+          style={{
+            'font-size': `${percent(24)}px`,
+          }}
+        >
           {_alt()}
         </span>
       </div>
