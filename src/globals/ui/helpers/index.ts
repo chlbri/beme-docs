@@ -5,3 +5,4 @@ export * from './boolean';
 export * from './circularDirection';
 export * from './base64';
 export * from './sleep';
+export * from './call';
