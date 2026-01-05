@@ -1,7 +1,12 @@
 import { cn } from '~cn/utils';
-import { animationsData, type AnimationData } from './-data';
+import {
+  animationsData,
+  BUTTON_CLASSES,
+  type AnimationData,
+} from './-data';
 import { For, createSignal, Show, type Component } from 'solid-js';
 import { MultiText } from '~/globals/ui/molecules';
+import { isOverFlowed } from '~/globals/ui/signals/overflow';
 
 type AnimationState = 'playing' | 'paused' | 'stopped';
 
@@ -21,16 +26,20 @@ const AnimationCard: Component<AnimationCardProps> = props => {
   };
 
   const getAnimationStyle = () => {
-    if (state() === 'paused') return 'paused';
-    if (state() === 'stopped') return 'paused';
+    const currentState = state();
+    const toPause =
+      currentState === 'paused' || currentState === 'stopped';
+    if (toPause) return 'paused';
     return 'running';
   };
+
+  const [overflowed, setOverRef] = isOverFlowed.x();
 
   const noBorder = props.animation.id === 'color-shift';
 
   return (
-    <article class='bg-card rounded-lg border border-gray-500 overflow-hidden hover:shadow-lg transition-shadow duration-300'>
-      <div class='h-48 bg-muted flex items-center justify-center relative overflow-hidden'>
+    <article class='border border-yellow-900 overflow-hidden hover:shadow-lg transition-shadow duration-300'>
+      <div class='h-50 bg-muted flex items-center justify-center  overflow-hidden'>
         <Show
           when={props.animation.type === 'text'}
           fallback={
@@ -69,19 +78,28 @@ const AnimationCard: Component<AnimationCardProps> = props => {
       </div>
 
       <div class='p-4'>
-        <h3 class='text-lg font-semibold text-card-foreground mb-1'>
+        <h3 class='text-lg font-semibold text-gray-700 mb-1'>
           {props.animation.name}
         </h3>
-        <p class='text-muted-foreground text-sm mb-4'>
-          {props.animation.description}
-        </p>
+        <div
+          class='text-zinc-500 text-sm mb-4 text-nowrap overflow-x-scroll no-scrollbar text-center mx-5 select-none'
+          ref={setOverRef}
+          classList={{
+            'cursor-col-resize': overflowed(),
+          }}
+        >
+          {props.animation.description} {overflowed() ? '...' : ''}
+        </div>
 
         <div class='flex items-center gap-2 flex-wrap'>
           <button
             type='button'
             onClick={handleStart}
             disabled={state() === 'playing'}
-            class='px-3 py-1.5 text-xs font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
+            class={cn(
+              'px-3 py-1.5 text-xs font-medium rounded-md  disabled:opacity-50 disabled:cursor-not-allowed transition-colors active:scale-95',
+              BUTTON_CLASSES.start,
+            )}
           >
             Start
           </button>
@@ -89,7 +107,10 @@ const AnimationCard: Component<AnimationCardProps> = props => {
             type='button'
             onClick={handlePause}
             disabled={state() === 'paused' || state() === 'stopped'}
-            class='px-3 py-1.5 text-xs font-medium rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/80 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
+            class={cn(
+              'px-3 py-1 text-xs font-medium rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-colors active:scale-95 border-3 border-zinc-700',
+              BUTTON_CLASSES.pause,
+            )}
           >
             Pause
           </button>
@@ -97,16 +118,22 @@ const AnimationCard: Component<AnimationCardProps> = props => {
             type='button'
             onClick={handleStop}
             disabled={state() === 'stopped'}
-            class='px-3 py-1.5 text-xs font-medium rounded-md bg-red-400 text-white hover:bg-destructive/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
+            class={cn(
+              'px-3 py-1.5 text-xs font-medium rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-colors active:scale-95',
+              BUTTON_CLASSES.stop,
+            )}
           >
             Stop
           </button>
           <button
             type='button'
             onClick={handleReset}
-            class='px-3 py-1.5 text-xs font-medium rounded-md border border-blue-600 bg-blue-100 text-slate-700 transition-colors'
+            class={cn(
+              'px-2 py-1.5 text-xs font-medium rounded-md duration-150 ease-in-out transition-all active:scale-95 ring-blue-600 ring-1 hover:ring-3 italic',
+              BUTTON_CLASSES.reset,
+            )}
           >
-            Reset
+            Reset 🔄
           </button>
         </div>
 
@@ -310,7 +337,7 @@ export const AnimationsPage: Component<{
             <h3 class='text-3xl font-semibold text-foreground mb-4'>
               Shape Animations ({filteredByType('shape').length})
             </h3>
-            <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6'>
+            <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10'>
               <For each={filteredByType('shape')}>
                 {animation => <AnimationCard animation={animation} />}
               </For>
@@ -328,7 +355,7 @@ export const AnimationsPage: Component<{
             <h3 class='text-3xl font-semibold text-foreground mb-4'>
               Text Animations ({filteredByType('text').length})
             </h3>
-            <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6'>
+            <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10'>
               <For each={filteredByType('text')}>
                 {animation => <AnimationCard animation={animation} />}
               </For>

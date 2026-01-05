@@ -9,6 +9,7 @@ import {
 export const Route = createFileRoute('/graphic-charter/attemp1/')({
   head: () => ({
     links: [
+      // #region Google Fonts
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       {
         rel: 'preconnect',
@@ -19,6 +20,7 @@ export const Route = createFileRoute('/graphic-charter/attemp1/')({
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap',
       },
+      // #endregion
     ],
   }),
   component: () => (

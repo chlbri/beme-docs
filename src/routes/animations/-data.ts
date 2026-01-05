@@ -59,7 +59,7 @@ export const animationsData: AnimationData[] = [
   },
   {
     id: 'slide-in-left',
-    name: 'Slide In Left',
+    name: 'Slide In From Left',
     description: 'Element slides in from the left side',
     type: 'shape',
     animationClass: 'animate-[slide-in-left_2s_ease-out_infinite]',
@@ -67,7 +67,7 @@ export const animationsData: AnimationData[] = [
   },
   {
     id: 'slide-in-right',
-    name: 'Slide In Right',
+    name: 'Slide In From Right',
     description: 'Element slides in from the right side',
     type: 'shape',
     animationClass: 'animate-[slide-in-right_2s_ease-out_infinite]',
@@ -75,7 +75,7 @@ export const animationsData: AnimationData[] = [
   },
   {
     id: 'slide-in-up',
-    name: 'Slide In Up',
+    name: 'Slide In From Up',
     description: 'Element slides in from the bottom',
     type: 'shape',
     animationClass: 'animate-[slide-in-up_2s_ease-out_infinite]',
@@ -83,7 +83,7 @@ export const animationsData: AnimationData[] = [
   },
   {
     id: 'slide-in-down',
-    name: 'Slide In Down',
+    name: 'Slide In From Down',
     description: 'Element slides in from the top',
     type: 'shape',
     animationClass: 'animate-[slide-in-down_2s_ease-out_infinite]',
@@ -294,3 +294,10 @@ export const animationsData: AnimationData[] = [
     duration: 2,
   },
 ];
+
+export const BUTTON_CLASSES = {
+  start: 'bg-black text-white hover:bg-black/90',
+  pause: 'bg-slate-200 text-zinc-700 hover:bg-slate-200/90',
+  stop: 'bg-red-500 text-white hover:bg-red-500/90',
+  reset: 'bg-blue-100 text-blue-700',
+};

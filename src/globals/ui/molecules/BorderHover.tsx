@@ -82,7 +82,7 @@ export const BorderHover: ParentComponent<BorderHoverProps> = props => {
             props.altClass,
           )}
           style={{
-            'font-size': `${percent(24)}px`,
+            'font-size': `${percent(26)}px`,
           }}
         >
           {_alt()}

@@ -3,7 +3,7 @@ import { For } from 'solid-js';
 import {
   BorderHover,
   type BorderHoverProps,
-} from '~/globals/ui/molecules/BorderHover';
+} from '~ui/molecules/BorderHover';
 
 const DATA: (BorderHoverProps & { children: string })[] = [
   {
