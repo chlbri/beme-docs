@@ -114,7 +114,7 @@ export default {
 
 @layer base {
   * {
-    @apply border-border;
+    @apply outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
@@ -131,13 +131,13 @@ import { Button } from '@/components/ui/button';
 
 function MyComponent() {
   return (
-    <div className="space-x-2">
+    <div className='space-x-2'>
       <Button>Default</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="destructive">Destructive</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="ghost">Ghost</Button>
-      <Button variant="link">Link</Button>
+      <Button variant='secondary'>Secondary</Button>
+      <Button variant='destructive'>Destructive</Button>
+      <Button variant='outline'>Outline</Button>
+      <Button variant='ghost'>Ghost</Button>
+      <Button variant='link'>Link</Button>
     </div>
   );
 }
@@ -151,9 +151,9 @@ import { Label } from '@/components/ui/label';
 
 function FormComponent() {
   return (
-    <div className="space-y-2">
-      <Label htmlFor="email">Email</Label>
-      <Input id="email" type="email" placeholder="Enter your email" />
+    <div className='space-y-2'>
+      <Label htmlFor='email'>Email</Label>
+      <Input id='email' type='email' placeholder='Enter your email' />
     </div>
   );
 }
@@ -250,23 +250,23 @@ function LoginForm() {
         e.stopPropagation();
         form.handleSubmit();
       }}
-      className="space-y-4"
+      className='space-y-4'
     >
       <form.Field
-        name="email"
+        name='email'
         validators={{
           onChange: formSchema.shape.email,
         }}
         children={field => (
           <div>
             <Input
-              type="email"
-              placeholder="Email"
+              type='email'
+              placeholder='Email'
               value={field.state.value}
               onChange={e => field.handleChange(e.target.value)}
             />
             {field.state.meta.errors.length > 0 && (
-              <p className="text-red-500 text-sm">
+              <p className='text-red-500 text-sm'>
                 {field.state.meta.errors[0]}
               </p>
             )}
@@ -275,20 +275,20 @@ function LoginForm() {
       />
 
       <form.Field
-        name="password"
+        name='password'
         validators={{
           onChange: formSchema.shape.password,
         }}
         children={field => (
           <div>
             <Input
-              type="password"
-              placeholder="Password"
+              type='password'
+              placeholder='Password'
               value={field.state.value}
               onChange={e => field.handleChange(e.target.value)}
             />
             {field.state.meta.errors.length > 0 && (
-              <p className="text-red-500 text-sm">
+              <p className='text-red-500 text-sm'>
                 {field.state.meta.errors[0]}
               </p>
             )}
@@ -299,7 +299,7 @@ function LoginForm() {
       <form.Subscribe
         selector={state => [state.canSubmit, state.isSubmitting]}
         children={([canSubmit, isSubmitting]) => (
-          <Button type="submit" disabled={!canSubmit}>
+          <Button type='submit' disabled={!canSubmit}>
             {isSubmitting ? '...' : 'Submit'}
           </Button>
         )}
@@ -333,7 +333,7 @@ import { theme, toggleTheme } from '@/lib/theme';
 
 function ThemeToggle() {
   return (
-    <Button variant="outline" size="sm" onClick={toggleTheme}>
+    <Button variant='outline' size='sm' onClick={toggleTheme}>
       Toggle {theme() === 'light' ? 'Dark' : 'Light'} Mode
     </Button>
   );

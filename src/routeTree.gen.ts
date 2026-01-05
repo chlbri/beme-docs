@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StatesRouteImport } from './routes/states'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnimationsIndexRouteImport } from './routes/animations/index'
 import { Route as ComponentsBorderHoverRouteImport } from './routes/components/border-hover'
 import { Route as GraphicCharterAttemp1IndexRouteImport } from './routes/graphic-charter/attemp1/index'
 import { Route as ComponentsLogin_beauty1IndexRouteImport } from './routes/components/login_beauty1/index'
@@ -24,6 +25,11 @@ const StatesRoute = StatesRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnimationsIndexRoute = AnimationsIndexRouteImport.update({
+  id: '/animations/',
+  path: '/animations/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsBorderHoverRoute = ComponentsBorderHoverRouteImport.update({
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
+  '/animations': typeof AnimationsIndexRoute
   '/cases_studies/event_loop': typeof Cases_studiesEvent_loopIndexRoute
   '/components/login_beauty1': typeof ComponentsLogin_beauty1IndexRoute
   '/graphic-charter/attemp1': typeof GraphicCharterAttemp1IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
+  '/animations': typeof AnimationsIndexRoute
   '/cases_studies/event_loop': typeof Cases_studiesEvent_loopIndexRoute
   '/components/login_beauty1': typeof ComponentsLogin_beauty1IndexRoute
   '/graphic-charter/attemp1': typeof GraphicCharterAttemp1IndexRoute
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
+  '/animations/': typeof AnimationsIndexRoute
   '/cases_studies/event_loop/': typeof Cases_studiesEvent_loopIndexRoute
   '/components/login_beauty1/': typeof ComponentsLogin_beauty1IndexRoute
   '/graphic-charter/attemp1/': typeof GraphicCharterAttemp1IndexRoute
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/'
     | '/states'
     | '/components/border-hover'
+    | '/animations'
     | '/cases_studies/event_loop'
     | '/components/login_beauty1'
     | '/graphic-charter/attemp1'
@@ -89,6 +99,7 @@ export interface FileRouteTypes {
     | '/'
     | '/states'
     | '/components/border-hover'
+    | '/animations'
     | '/cases_studies/event_loop'
     | '/components/login_beauty1'
     | '/graphic-charter/attemp1'
@@ -97,6 +108,7 @@ export interface FileRouteTypes {
     | '/'
     | '/states'
     | '/components/border-hover'
+    | '/animations/'
     | '/cases_studies/event_loop/'
     | '/components/login_beauty1/'
     | '/graphic-charter/attemp1/'
@@ -106,6 +118,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   StatesRoute: typeof StatesRoute
   ComponentsBorderHoverRoute: typeof ComponentsBorderHoverRoute
+  AnimationsIndexRoute: typeof AnimationsIndexRoute
   Cases_studiesEvent_loopIndexRoute: typeof Cases_studiesEvent_loopIndexRoute
   ComponentsLogin_beauty1IndexRoute: typeof ComponentsLogin_beauty1IndexRoute
   GraphicCharterAttemp1IndexRoute: typeof GraphicCharterAttemp1IndexRoute
@@ -125,6 +138,13 @@ declare module '@tanstack/solid-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/animations/': {
+      id: '/animations/'
+      path: '/animations'
+      fullPath: '/animations'
+      preLoaderRoute: typeof AnimationsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/border-hover': {
@@ -162,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   StatesRoute: StatesRoute,
   ComponentsBorderHoverRoute: ComponentsBorderHoverRoute,
+  AnimationsIndexRoute: AnimationsIndexRoute,
   Cases_studiesEvent_loopIndexRoute: Cases_studiesEvent_loopIndexRoute,
   ComponentsLogin_beauty1IndexRoute: ComponentsLogin_beauty1IndexRoute,
   GraphicCharterAttemp1IndexRoute: GraphicCharterAttemp1IndexRoute,

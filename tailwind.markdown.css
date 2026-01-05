@@ -1,0 +1,201 @@
+@import 'tailwindcss';
+
+.markdown-content {
+  @apply text-gray-900 dark:text-gray-100;
+  line-height: 1.7;
+  font-family: var(--font-poppins);
+}
+
+.markdown-content p strong,
+.markdown-content p strong em {
+  @apply text-yellow-900;
+}
+
+.markdown-content ul strong,
+.markdown-content ul strong em {
+  @apply text-zinc-600;
+}
+
+/* Headings */
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  @apply text-center;
+}
+
+.markdown-content h1 {
+  @apply text-4xl font-bold mt-8 mb-4 text-gray-900 dark:text-white;
+  font-family: var(--font-roboto);
+}
+
+.markdown-content h2 {
+  @apply text-3xl mt-7 mb-3 text-gray-900 dark:text-white;
+  font-family: var(--font-roboto);
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.markdown-content h3 {
+  @apply text-2xl font-semibold mt-6 mb-3 text-gray-800 dark:text-gray-200;
+  font-family: var(--font-roboto);
+}
+
+.markdown-content h4 {
+  @apply text-xl font-semibold mt-5 mb-2 text-gray-800 dark:text-gray-200;
+}
+
+.markdown-content h5 {
+  @apply text-lg font-semibold mt-4 mb-2 text-gray-700 dark:text-gray-300;
+}
+
+.markdown-content h6 {
+  @apply text-base font-semibold mt-3 mb-2 text-gray-700 dark:text-gray-300;
+}
+
+/* Paragraphs */
+.markdown-content p {
+  @apply mb-4;
+}
+
+.markdown-content p:last-child {
+  @apply mb-0;
+}
+
+/* Links */
+.markdown-content a {
+  @apply text-orange-400 dark:text-white hover:text-orange-700 dark:hover:text-white hover:underline underline-offset-2 decoration-2 transition-colors;
+}
+
+/* Lists */
+.markdown-content ul,
+.markdown-content ol {
+  @apply mb-4 pl-6;
+}
+
+.markdown-content li {
+  @apply mb-2;
+}
+
+.markdown-content ul > li {
+  @apply list-disc;
+}
+
+.markdown-content ol > li {
+  @apply list-decimal;
+}
+
+.markdown-content ul ul,
+.markdown-content ol ol,
+.markdown-content ul ol,
+.markdown-content ol ul {
+  @apply my-2;
+}
+
+/* Code */
+.markdown-content code {
+  @apply bg-gray-100 dark:bg-gray-800 text-red-600 dark:text-red-400 px-2 py-1 rounded font-mono text-sm;
+  word-break: break-word;
+}
+
+.markdown-content pre {
+  @apply bg-gray-900 dark:bg-gray-950 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4;
+  font-family: 'Fira Code', 'Courier New', monospace;
+}
+
+.markdown-content pre code {
+  @apply bg-transparent text-gray-100 p-0 rounded-none;
+}
+
+/* Blockquotes */
+.markdown-content blockquote {
+  @apply border-l-4 rounded-r-sm border-orange-700 my-4 bg-orange-50 dark:bg-orange-950/20 italic text-zinc-500 dark:text-gray-200 relative;
+}
+
+.markdown-content blockquote p {
+  @apply z-10 bg-black/5 p-3 backdrop-blur-xs shadow-lg rounded-r-sm;
+}
+
+.markdown-content blockquote::before {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f97316' %3E%3Cpath d='M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z'/%3E%3C/svg%3E");
+  @apply -scale-x-100 absolute -left-2 -top-3 opacity-50 size-18;
+}
+
+.markdown-content blockquote::after {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f97316' %3E%3Cpath d='M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z'/%3E%3C/svg%3E");
+  @apply absolute -right-1 -bottom-2 rotate-180 opacity-50 size-10 -scale-x-100;
+}
+
+.markdown-content iframe {
+  @apply aspect-video md:w-10/12 lg:w-9/12 h-full mx-auto rounded-xl my-10 shadow-lg;
+}
+
+/* Horizontal Rule */
+.markdown-content hr {
+  @apply my-8 border-gray-300 dark:border-gray-600;
+}
+
+/* Tables */
+.markdown-content table {
+  @apply w-full border-collapse border border-gray-300 dark:border-gray-600 mb-4;
+}
+
+.markdown-content thead {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+.markdown-content th {
+  @apply border border-gray-300 dark:border-gray-600 px-4 py-2 text-left font-semibold;
+}
+
+.markdown-content td {
+  @apply border border-gray-300 dark:border-gray-600 px-4 py-2;
+}
+
+/* Images */
+.markdown-content img {
+  @apply w-full h-auto rounded-lg my-4 shadow-md;
+  display: block;
+}
+
+/* Strong and emphasis */
+.markdown-content strong {
+  @apply font-semibold text-gray-900 dark:text-white;
+}
+
+.markdown-content em {
+  @apply italic text-gray-800 dark:text-gray-200;
+}
+
+/* Inline HTML elements */
+.markdown-content del {
+  @apply line-through text-gray-500 dark:text-gray-400;
+}
+
+.markdown-content mark {
+  @apply bg-yellow-200 dark:bg-yellow-800/50 text-gray-900 dark:text-gray-100 px-1 rounded;
+}
+
+/* Media responsiveness */
+@media (max-width: 640px) {
+  .markdown-content h1 {
+    @apply text-2xl;
+  }
+
+  .markdown-content h2 {
+    @apply text-xl;
+  }
+
+  .markdown-content h3 {
+    @apply text-lg;
+  }
+
+  .markdown-content table {
+    @apply text-sm;
+  }
+
+  .markdown-content th,
+  .markdown-content td {
+    @apply px-2 py-1;
+  }
+}
