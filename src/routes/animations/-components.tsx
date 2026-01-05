@@ -259,7 +259,7 @@ export const AnimationsPage: Component<{
               placeholder='Search animations...'
               value={searchQuery()}
               onInput={e => setSearchQuery(e.currentTarget.value)}
-              class='w-full pl-10 pr-4 py-2 border border-input rounded-lg bg-slate-700'
+              class='w-full pl-10 pr-4 py-2 border border-input rounded-lg bg-zinc-50'
             />
           </div>
 
