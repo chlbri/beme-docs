@@ -1,5 +1,5 @@
 import { Link, useLocation } from '@tanstack/solid-router';
-import { For, Show, createMemo, type Component } from 'solid-js';
+import { For, Show, type Component } from 'solid-js';
 
 interface BreadcrumbItem {
   label: string;
@@ -7,47 +7,47 @@ interface BreadcrumbItem {
   isLast: boolean;
 }
 
-export const Breadcrumbs: Component = () => {
-  const location = useLocation();
+const getBreadcrumbsFromPath = (pathname: string): BreadcrumbItem[] => {
+  if (!pathname || pathname === '/') return [];
 
-  const breadcrumbs = createMemo(() => {
-    const pathname = location.pathname;
-    if (!pathname || pathname === '/') return [];
+  const segments = pathname.split('/').filter(Boolean);
+  const items: BreadcrumbItem[] = [];
 
-    const segments = pathname.split('/').filter(Boolean);
-    const items: BreadcrumbItem[] = [];
-
-    // Add Home
-    items.push({
-      label: 'Home',
-      path: '/',
-      isLast: false,
-    });
-
-    // Build breadcrumbs from path segments
-    let currentPath = '';
-    segments.forEach((segment, index) => {
-      currentPath += `/${segment}`;
-      const isLast = index === segments.length - 1;
-
-      // Format label: capitalize and replace - or _ with space
-      const label = segment
-        .split(/[-_]/)
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-
-      items.push({
-        label,
-        path: currentPath,
-        isLast,
-      });
-    });
-
-    return items;
+  // Add Home
+  items.push({
+    label: 'Home',
+    path: '/',
+    isLast: false,
   });
 
+  // Build breadcrumbs from path segments
+  let currentPath = '';
+  segments.forEach((segment, index) => {
+    currentPath += `/${segment}`;
+    const isLast = index === segments.length - 1;
+
+    // Format label: capitalize and replace - or _ with space
+    const label = segment
+      .split(/[-_]/)
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+
+    items.push({
+      label,
+      path: currentPath,
+      isLast,
+    });
+  });
+
+  return items;
+};
+
+export const Breadcrumbs: Component = () => {
+  const location = useLocation();
+  const breadcrumbs = () => getBreadcrumbsFromPath(location.pathname);
+
   return (
-    <Show when={breadcrumbs().length > 1} fallback={<div class='mb-4' />}>
+    <Show when={breadcrumbs().length > 1}>
       <nav class='flex items-center space-x-2 text-sm mb-4 px-4 py-3 bg-slate-800/50 rounded-lg border border-purple-500/20 max-w-full overflow-x-auto'>
         <For each={breadcrumbs()}>
           {(item, index) => (
