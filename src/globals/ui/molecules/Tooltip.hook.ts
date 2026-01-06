@@ -1,5 +1,5 @@
 import { createMemo, createSignal, splitProps } from 'solid-js';
-import type { TooltipProps } from './Tooltip.types';
+import type { ToolTipProps } from './Tooltip.types';
 import { undefinedCall } from '../helpers';
 import type { PropsOf } from '../types';
 import { getPositionClass } from './Tooltip.helpers';
@@ -13,22 +13,27 @@ type ExtractFn<T extends keyof PropsHandlers> = (
   e: Parameters<Extract<PropsHandlers[T], (...args: any) => any>>[0],
 ) => any;
 
-export const useHook = (props: TooltipProps) => {
+export const useHook = (
+  props: Omit<ToolTipProps, 'children' | 'tooltip'>,
+) => {
   let timeoutShow: ReturnType<typeof setTimeout>;
   let timeoutHide: ReturnType<typeof setTimeout>;
-  let containerE: HTMLDivElement | undefined;
+  const [containerRef, setContainerRef] = createSignal<HTMLDivElement>();
 
   const [isVisible, setIsVisible] = createSignal(false);
   const [computedPosition, setComputedPosition] = createSignal<
     'top' | 'bottom'
   >('top');
 
+  const position = props.position || 'viewport-relative';
+
   const showTooltip = () => {
     if (timeoutHide) clearTimeout(timeoutHide);
+    const container = containerRef();
 
     // Calculate position for viewport-relative
-    if (props.position === 'viewport-relative' && containerE) {
-      const rect = containerE.getBoundingClientRect();
+    if (position === 'viewport-relative' && container) {
+      const rect = container.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
       const spaceAbove = rect.top;
       const spaceBelow = viewportHeight - rect.bottom;
@@ -79,7 +84,7 @@ export const useHook = (props: TooltipProps) => {
   };
 
   const positionClass = createMemo(() =>
-    getPositionClass(props.position, computedPosition()),
+    getPositionClass(position, computedPosition()),
   );
 
   const handlers = {
@@ -92,7 +97,7 @@ export const useHook = (props: TooltipProps) => {
   return {
     isVisible,
     positionClass,
-    containerE,
+    setContainerRef,
     handlers,
     local,
   };

@@ -4,7 +4,7 @@ import type { OmitPropsOf } from '../types';
 
 export type Position = (typeof POSITIONS)[number];
 
-export type TooltipProps = {
+export type ToolTipProps = {
   tooltip: JSX.Element;
   showDelay?: number;
   hideDelay?: number;

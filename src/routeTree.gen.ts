@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StatesRouteImport } from './routes/states'
+import { Route as DemoRouteImport } from './routes/demo'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnimationsIndexRouteImport } from './routes/animations/index'
 import { Route as ComponentsBorderHoverRouteImport } from './routes/components/border-hover'
@@ -20,6 +21,11 @@ import { Route as Cases_studiesEvent_loopIndexRouteImport } from './routes/cases
 const StatesRoute = StatesRouteImport.update({
   id: '/states',
   path: '/states',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -58,6 +64,7 @@ const Cases_studiesEvent_loopIndexRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/demo': typeof DemoRoute
   '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
   '/animations': typeof AnimationsIndexRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/demo': typeof DemoRoute
   '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
   '/animations': typeof AnimationsIndexRoute
@@ -77,6 +85,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/demo': typeof DemoRoute
   '/states': typeof StatesRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
   '/animations/': typeof AnimationsIndexRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/demo'
     | '/states'
     | '/components/border-hover'
     | '/animations'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/demo'
     | '/states'
     | '/components/border-hover'
     | '/animations'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/demo'
     | '/states'
     | '/components/border-hover'
     | '/animations/'
@@ -116,6 +128,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DemoRoute: typeof DemoRoute
   StatesRoute: typeof StatesRoute
   ComponentsBorderHoverRoute: typeof ComponentsBorderHoverRoute
   AnimationsIndexRoute: typeof AnimationsIndexRoute
@@ -131,6 +144,13 @@ declare module '@tanstack/solid-router' {
       path: '/states'
       fullPath: '/states'
       preLoaderRoute: typeof StatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -180,6 +200,7 @@ declare module '@tanstack/solid-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DemoRoute: DemoRoute,
   StatesRoute: StatesRoute,
   ComponentsBorderHoverRoute: ComponentsBorderHoverRoute,
   AnimationsIndexRoute: AnimationsIndexRoute,

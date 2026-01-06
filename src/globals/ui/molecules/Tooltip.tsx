@@ -1,35 +1,17 @@
-import { type Component, type JSX } from 'solid-js';
+import { type Component } from 'solid-js';
 import { cn } from '../cn/utils';
-import type { OmitPropsOf } from '../types';
 import { useHook } from './Tooltip.hook';
+import type { ToolTipProps } from './Tooltip.types';
 
-type Position =
-  | 'top'
-  | 'bottom'
-  | 'left'
-  | 'right'
-  | 'top-left'
-  | 'top-right'
-  | 'bottom-left'
-  | 'bottom-right'
-  | 'viewport-relative';
-
-type Props = {
-  tooltip: JSX.Element;
-  showDelay?: number;
-  hideDelay?: number;
-  position?: Position;
-} & OmitPropsOf<'div'>;
-
-export const TootTip: Component<Props> = props => {
-  const { isVisible, positionClass, containerE, handlers, local } =
+export const ToolTip: Component<ToolTipProps> = props => {
+  const { isVisible, positionClass, setContainerRef, handlers, local } =
     useHook(props);
 
   return (
     <div
       {...local}
-      ref={containerE}
-      class={cn('relative', props.class)}
+      ref={setContainerRef}
+      class={cn('relative', local.class)}
       {...handlers}
     >
       {props.children}
