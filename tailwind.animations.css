@@ -9,7 +9,7 @@
   --animate-marquee-fast: marquee 10s linear infinite;
   --animate-spin-slow: spin 10s linear infinite;
   --animate-gradient-x: gradient-x 3s ease infinite;
-  --animate-gradient-shift: gradient-shift 8s ease infinite;
+  --animate-gradient-shift: gradient-x 8s ease infinite;
   --animate-fade-in: fade-in-up 0.8s ease-out;
 }
 
@@ -507,15 +507,6 @@
   }
 
   @keyframes gradient-x {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  @keyframes gradient-shift {
     0%, 100% {
       background-position: 0% 50%;
     }

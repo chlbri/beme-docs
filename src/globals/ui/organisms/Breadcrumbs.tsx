@@ -76,7 +76,7 @@ export const Breadcrumbs: Component = () => {
                 }
               >
                 <Link
-                  href={item.path}
+                  to={item.path}
                   class='text-gray-400 hover:text-purple-300 transition-colors whitespace-nowrap'
                 >
                   {item.label}
