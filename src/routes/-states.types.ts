@@ -10,6 +10,7 @@ export type Btn1 = Component<{
 export type BtnGroupProps = {
   title: JSX.Element;
   value: Accessor<number>;
+  sync: Accessor<number>;
   increment: () => number;
   decrement: () => number;
   incrementByFive: () => number;

@@ -70,51 +70,60 @@ export const Route = createFileRoute('/states')({
         <BtnGroup
           title='Hello Counters - normal !'
           value={count}
+          sync={count}
           {...handlers}
         />
         <BtnGroup
           title='Hello Debounce (1000 ms) !'
           value={countDebounced1000}
+          sync={count}
           {...handlers}
         />
         <BtnGroup
           title='Hello Debounce (2000 ms) !'
           value={countDebounced2000}
+          sync={count}
           {...handlers}
         />
         <BtnGroup
           title='Hello Throttle (1500 ms) !'
           value={countThrottled1500}
+          sync={count}
           {...handlers}
         />
 
         <BtnGroup
           title='Hello batch (4 by 600 ms) !'
           value={countBatch4_600}
+          sync={count}
           {...handlers}
         />
 
         <BtnGroup
           title='Hello batch (10 by 500 ms) !'
           value={countBatch10_500}
+          sync={count}
           {...handlers}
         />
 
         <BtnGroup
           title='Hello Rate Limited (5 per 2000 ms) !'
           value={countRateLimited}
+          sync={count}
           {...handlers}
         />
 
         <BtnGroup
           title='Hello Queuer (25, wait each 500 ms) !'
           value={countQueue25_500}
+          sync={count}
           {...handlers}
         />
 
         <BtnGroup
           title='Hello Queuer (10, wait each 1000 ms) !'
           value={countQueue10_1000}
+          sync={count}
           {...handlers}
         />
       </div>
