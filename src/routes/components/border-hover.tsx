@@ -1,6 +1,6 @@
 import { createDebouncedSignal } from '@tanstack/solid-pacer';
 import { createFileRoute } from '@tanstack/solid-router';
-import { createEffect, createMemo, For, onMount } from 'solid-js';
+import { createMemo, For, onMount } from 'solid-js';
 import { createWindowHandler } from '~/globals/ui/signals/window';
 import {
   BorderHover,
@@ -58,9 +58,6 @@ export const Route = createFileRoute('/components/border-hover')({
       return isBig ? 500 : 300;
     });
 
-    createEffect(() => {
-      console.log('windowWidth changed:', windowWidth());
-    });
     return (
       <div class='text-lg min-h-[90vh] content-center place-items-center grid grid-cols-1 lg:grid-cols-2 pt-12 gap-6'>
         <For each={DATA}>
