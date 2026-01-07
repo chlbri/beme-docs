@@ -1,4 +1,8 @@
-import { createSignal, type ParentComponent } from 'solid-js';
+import {
+  createSignal,
+  type Accessor,
+  type ParentComponent,
+} from 'solid-js';
 import { cn } from '../cn/utils';
 
 export type BorderHoverProps = {
@@ -6,7 +10,7 @@ export type BorderHoverProps = {
   /**
    * in pixels
    */
-  width?: number;
+  width?: Accessor<number>;
   class?: string;
   altClass?: string;
 };
@@ -22,8 +26,9 @@ export const BorderHover: ParentComponent<BorderHoverProps> = props => {
   // #region Properties
   const firstLetter = props.alt.charAt(0);
   const [_alt, _setAlt] = createSignal(firstLetter);
-  const percent = (value: number) => (value / BASE_WIDTH) * width;
-  const width = props.width ?? DEFAULT_WIDTH;
+  const width = () => (props.width ? props.width() : DEFAULT_WIDTH);
+  const percent = (value: number) => (value / BASE_WIDTH) * width();
+
   // #endregion
 
   return (
@@ -31,7 +36,7 @@ export const BorderHover: ParentComponent<BorderHoverProps> = props => {
       class={cn('bg-green-600 px-5 text-gray-50', props.class)}
       style={{
         'background-size': '100%',
-        width: `${width}px`,
+        width: `${width()}px`,
         'border-radius': `${percent(20)}px`,
         'aspect-ratio': '3/2',
         'align-content': 'center',
@@ -41,7 +46,7 @@ export const BorderHover: ParentComponent<BorderHoverProps> = props => {
     >
       {props.children}
       <div
-        class='absolute h-[15%] w-[10%] bottom-0 right-0 grid px-2 place-items-center ease-out transition-all duration-500 hover:w-[60%] group cursor-pointer outline-white'
+        class='absolute h-[15%] w-[10%] bottom-0 right-0 px-2 ease-out transition-all duration-500 hover:w-[60%] group cursor-pointer outline-white flex items-center justify-center'
         onMouseOver={() => {
           setTimeout(() => {
             _setAlt(props.alt);
@@ -78,7 +83,7 @@ export const BorderHover: ParentComponent<BorderHoverProps> = props => {
         />
         <span
           class={cn(
-            'grid place-items-center overflow-hidden tracking-widest group-hover:tracking-wide w-10 group-hover:w-full text-nowrap',
+            'overflow-hidden tracking-widest group-hover:tracking-wide w-10 group-hover:w-full text-nowrap text-center',
             props.altClass,
           )}
           style={{

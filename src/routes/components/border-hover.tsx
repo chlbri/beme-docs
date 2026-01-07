@@ -1,5 +1,7 @@
+import { createDebouncedSignal } from '@tanstack/solid-pacer';
 import { createFileRoute } from '@tanstack/solid-router';
-import { For } from 'solid-js';
+import { createEffect, createMemo, For, onMount } from 'solid-js';
+import { createWindowHandler } from '~/globals/ui/signals/window';
 import {
   BorderHover,
   type BorderHoverProps,
@@ -38,19 +40,37 @@ const DATA: (BorderHoverProps & { children: string })[] = [
 ];
 
 export const Route = createFileRoute('/components/border-hover')({
-  component: () => (
-    <div class='text-lg min-h-[90vh] content-center place-items-center grid grid-cols-1 md:grid-cols-2 pt-12 gap-6'>
-      <For each={DATA}>
-        {item => (
-          <BorderHover
-            alt={item.alt}
-            width={item.width}
-            class={item.class}
-          >
-            <h1 class='text-4xl font-bold select-none'>{item.children}</h1>
-          </BorderHover>
-        )}
-      </For>
-    </div>
-  ),
+  component: () => {
+    const [windowWidth, setWindowWidth] = createDebouncedSignal(0, {
+      wait: 50,
+    });
+
+    createWindowHandler.onMount('resize', () => {
+      setWindowWidth(window.innerWidth);
+    });
+
+    onMount(() => {
+      setWindowWidth(window.innerWidth);
+    });
+
+    const width = createMemo(() => {
+      const isBig = windowWidth() > 600;
+      return isBig ? 500 : 300;
+    });
+
+    createEffect(() => {
+      console.log('windowWidth changed:', windowWidth());
+    });
+    return (
+      <div class='text-lg min-h-[90vh] content-center place-items-center grid grid-cols-1 lg:grid-cols-2 pt-12 gap-6'>
+        <For each={DATA}>
+          {({ children, ...rest }) => (
+            <BorderHover {...rest} width={width}>
+              <h1 class='text-4xl font-bold select-none'>{children}</h1>
+            </BorderHover>
+          )}
+        </For>
+      </div>
+    );
+  },
 });
