@@ -55,7 +55,7 @@ export const BtnGroup: Component<BtnGroupProps> = props => {
             <Show when={notSynced()}>
               <div class='text-xl flex flex-col items-center'>
                 <div class='animate-pulse @5xs/main:-mb-1'>⚠️</div>
-                <div class='text-2xs font-light text-yellow-600 hidden @5xs/main:block tracking-tight text-nowrap'>
+                <div class='text-2xs font-light text-yellow-600 @max-5xs/main:hidden tracking-tight text-nowrap'>
                   out of sync
                 </div>
               </div>
