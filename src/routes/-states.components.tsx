@@ -14,6 +14,16 @@ export const BtnGroup: Component<BtnGroupProps> = props => {
   const [changed, setChanged] = createSignal(false);
   const notSynced = createMemo(() => props.value() < props.sync());
 
+  const minWidth = createMemo(() => {
+    // Calculate min width based on the length of the larger value
+    let valLength = Math.max(
+      String(props.value()).length,
+      String(props.sync()).length,
+    );
+    if (notSynced()) valLength += 0.5; // Extra space for warning icon;
+    return `${valLength}ch`;
+  });
+
   createEffect(
     on(props.value, () => {
       setChanged(true);
@@ -26,24 +36,32 @@ export const BtnGroup: Component<BtnGroupProps> = props => {
       class='relative flex flex-col mt-5 space-y-4 ring-2 ring-blue-500 p-4 transition duration-150 ease-in-out'
       classList={{ 'ring-4 ring-red-400': changed() }}
     >
-      <div class='flex items-center justify-between space-x-4'>
-        <h2
-          class='text-base text-blue-500 text-start text-ellipsis text-nowrap'
+      <div class='flex items-center justify-between space-x-2'>
+        <span
+          class='text-xl text-blue-500 text-start text-ellipsis text-nowrap overflow-hidden grow max-w-min transition-discrete duration-150 ease-in-out'
           classList={{ 'text-slate-400': changed() }}
         >
           {props.title}
-        </h2>
+        </span>
         <div
-          class='text-4xl font-black items-center flex space-x-0.5 select-none transition-colors duration-150 ease-in-out'
+          class='text-5xl font-black select-none transition-colors duration-150 ease-in-out grow inline w-fit'
           classList={{
             'text-red-400': changed(),
             'text-slate-700': !changed(),
           }}
+          style={{ 'min-width': minWidth() }}
         >
-          <Show when={notSynced()}>
-            <span class='text-xl'>⚠️</span>
-          </Show>
-          <span class='opacity-55'>{props.value()}</span>
+          <div class='@container/main flex items-center space-x-1 justify-end'>
+            <Show when={notSynced()}>
+              <div class='text-xl flex flex-col items-center'>
+                <div class='animate-pulse @5xs/main:-mb-1'>⚠️</div>
+                <div class='text-2xs font-light text-yellow-600 hidden @5xs/main:block tracking-tight text-nowrap'>
+                  out of sync
+                </div>
+              </div>
+            </Show>
+            <span class='opacity-55'>{props.value()}</span>
+          </div>
         </div>
       </div>
       <div class='grid grid-cols-2 gap-x-10 gap-y-5'>
