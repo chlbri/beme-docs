@@ -1,31 +1,81 @@
-import { createCounter } from '~signals/counter';
+import {
+  createDebouncedValue,
+  createRateLimitedValue,
+  createThrottledValue,
+} from '@tanstack/solid-pacer';
 import { createFileRoute } from '@tanstack/solid-router';
-import Counter from '~ui/molecules/Counter';
-import { reduceComponent } from '~ui/molecules/reducer';
+import { listenBatcher } from '~/globals/ui/signals/batch';
+import { BtnGroup } from './-states.components';
+import { useHook } from './-states.hooks';
 
 export const Route = createFileRoute('/states')({
   // Test data from loader
   loader: () => 15,
   component: () => {
-    const data = Route.useLoaderData();
+    const defaultValue = Route.useLoaderData()();
+    const { count, ...handlers } = useHook(defaultValue);
 
-    const { count, increment, decrement, incrementFn, decrementFn } =
-      createCounter(data());
+    const [countDebounced1000] = createDebouncedValue(count, {
+      wait: 1000,
+    });
 
-    const Btn = reduceComponent(Counter, { count });
+    const [countDebounced2000] = createDebouncedValue(count, {
+      wait: 2000,
+    });
 
-    const incrementByFive = incrementFn(5);
-    const decrementBySeven = decrementFn(7);
+    const [countThrottled1500] = createThrottledValue(count, {
+      wait: 1500,
+    });
+
+    const { last: countBatch } = listenBatcher({
+      fn: count,
+      options: {
+        wait: 600,
+        maxSize: 4,
+      },
+    });
+
+    const [countRateLimited] = createRateLimitedValue(count, {
+      limit: 5,
+      window: 2000,
+    });
+
+    // const [] = createBatcher()
 
     return (
-      <div class='flex flex-col mt-5 space-y-10'>
-        <h1 class='text-3xl text-blue-500'>Hello Counters !</h1>
-        <div class='space-x-5'>
-          <Btn label='Increment : ' onClick={increment} />
-          <Btn label='Increment (+5) : ' onClick={incrementByFive} />
-          <Btn label='Decrement : ' onClick={decrement} />
-          <Btn label='Decrement by (-7) : ' onClick={decrementBySeven} />
-        </div>
+      <div class='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-14 p-4'>
+        <BtnGroup
+          title='Hello Counters - normal !'
+          value={count}
+          {...handlers}
+        />
+        <BtnGroup
+          title='Hello Debounce (1000 ms) !'
+          value={countDebounced1000}
+          {...handlers}
+        />
+        <BtnGroup
+          title='Hello Debounce (2000 ms) !'
+          value={countDebounced2000}
+          {...handlers}
+        />
+        <BtnGroup
+          title='Hello Throttle (1500 ms) !'
+          value={countThrottled1500}
+          {...handlers}
+        />
+
+        <BtnGroup
+          title='Hello batch (4 by 600 ms) !'
+          value={countBatch}
+          {...handlers}
+        />
+
+        <BtnGroup
+          title='Hello Rate Limited (5 per 2000 ms) !'
+          value={countRateLimited}
+          {...handlers}
+        />
       </div>
     );
   },

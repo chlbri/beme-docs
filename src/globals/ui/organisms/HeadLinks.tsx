@@ -30,17 +30,15 @@ const Link: Component<LinkProps> = ({
   );
 };
 
-const HeadLinks: Component = () => {
+export const HeadLinksDemo: Component = () => {
   const LINKS = createLinks({
     filter: value => value === '/projects' || !value.includes('projects'),
     formatLabel,
   });
 
   return (
-    <header class='p-2 flex gap-2 text-lg justify-center w-full space-x-2'>
+    <header class='p-2 flex overflow-x-auto no-scrollbar text-lg justify-center w-full space-x-2'>
       <For each={LINKS} children={Link} />
     </header>
   );
 };
-
-export default HeadLinks;

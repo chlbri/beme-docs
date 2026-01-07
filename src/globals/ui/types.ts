@@ -4,6 +4,7 @@ import type {
   JSX,
   ValidComponent,
 } from 'solid-js';
+import type { FileRoutesByTo } from '~/routeTree.gen';
 
 export type PropsOf<
   T extends ValidComponent,
@@ -36,3 +37,11 @@ export type PiC<
 > = PickComponent<T, K>;
 
 export type RootLink = JSX.HTMLElementTags['link'];
+export type LinkTo = keyof FileRoutesByTo;
+
+export type ExtractParams<TTo extends string> =
+  TTo extends `${string}$${infer Param}/${infer Rest}`
+    ? Param | ExtractParams<Rest>
+    : TTo extends `${string}$${infer Param}`
+      ? Param
+      : never;

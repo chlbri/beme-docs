@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/solid-router';
+import { createFileRoute, Link } from '@tanstack/solid-router';
 import { ToolTip } from '~ui/molecules';
 
 export const Route = createFileRoute('/demo')({
@@ -13,6 +13,9 @@ function RouteComponent() {
           Hover me
         </button>
       </ToolTip>
+      <Link to='/' params={{}}>
+        Go to Home
+      </Link>
     </div>
   );
 }

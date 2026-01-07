@@ -1,19 +1,22 @@
 import type { Accessor, Component } from 'solid-js';
+import type { OmitPropsOf } from '../types';
+import { cn } from '../cn/utils';
 
-const Counter: Component<{
-  onClick: () => void;
-  count: Accessor<number>;
-  label: string;
-}> = ({ onClick, label, count }) => {
+export const Counter: Component<
+  {
+    count: Accessor<number>;
+  } & OmitPropsOf<'button'>
+> = ({ onClick, children: children, count, ...props }) => {
   return (
     <button
-      class='px-5 py-3 bg-blue-200 text-blue-800 rounded-2xl border-2 border-gray-900 outline-none cursor-pointer focus:border-blue-600 active:bg-gray-200'
+      class={cn(
+        'px-5 py-3 bg-blue-200 text-blue-800 rounded-2xl border-2 border-gray-900 outline-none cursor-pointer focus:border-blue-600 active:bg-gray-200',
+        props.class,
+      )}
       onClick={onClick}
       type='button'
     >
-      {`${label}${count()}`}
+      {`${children}${count()}`}
     </button>
   );
 };
-
-export default Counter;

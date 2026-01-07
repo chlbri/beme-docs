@@ -42,11 +42,6 @@ export const LoginBeautyContent1: Component<Props> = ({
             ? baseColor.lighten(CONTRASTER).hex()
             : baseColor.darken(CONTRASTER).hex();
 
-    if (color === 'black') {
-      console.log('isDark', isDark);
-      console.log(darkColor);
-    }
-
     return {
       '--input-color': baseColor.hex(),
       '--input-bg-color': darkColor,

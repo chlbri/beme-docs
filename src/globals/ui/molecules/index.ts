@@ -1,5 +1,6 @@
 export * from './AccordionQA';
 export * from './BorderHover';
+export * from './BreadCrumb';
 export * from './Counter';
 export * from './Focus';
 export * from './Footer';

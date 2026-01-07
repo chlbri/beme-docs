@@ -9,9 +9,9 @@ import {
 } from '@tanstack/solid-router';
 import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools';
 import appCss from '../../tailwind.css?url';
-import HeadLinks from '~ui/organisms/HeadLinks';
+import { HeadLinksDemo } from '~ui/organisms/HeadLinks';
 import { HydrationScript } from 'solid-js/web';
-import { Footer } from '~ui/molecules';
+import { BreadCrumb, Footer } from '~ui/molecules';
 
 export const Route = createRootRoute({
   head: () => ({
@@ -37,8 +37,9 @@ export const Route = createRootRoute({
         </head>
         <body class='flex flex-col min-h-screen'>
           <HeadContent />
-          <main class='p-2 w-full grow text-center'>
-            <HeadLinks />
+          <main class='p-2 grow text-center'>
+            <HeadLinksDemo />
+            <BreadCrumb class='mb-6' />
             <Outlet />
           </main>
           <Footer />
