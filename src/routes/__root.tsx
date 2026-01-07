@@ -39,7 +39,7 @@ export const Route = createRootRoute({
           <HeadContent />
           <main class='p-2 grow text-center'>
             <HeadLinksDemo />
-            <BreadCrumb class='mb-6' />
+            <BreadCrumb class='mb-2' />
             <Outlet />
           </main>
           <Footer />

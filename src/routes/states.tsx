@@ -4,6 +4,7 @@ import {
   createThrottledValue,
 } from '@tanstack/solid-pacer';
 import { createFileRoute } from '@tanstack/solid-router';
+import { listenQueue } from '~/globals/ui/signals';
 import { listenBatcher } from '~/globals/ui/signals/batch';
 import { BtnGroup } from './-states.components';
 import { useHook } from './-states.hooks';
@@ -27,11 +28,18 @@ export const Route = createFileRoute('/states')({
       wait: 1500,
     });
 
-    const { last: countBatch } = listenBatcher({
+    const { last: countBatch4_600 } = listenBatcher({
       fn: count,
       options: {
         wait: 600,
         maxSize: 4,
+      },
+    });
+    const { last: countBatch10_500 } = listenBatcher({
+      fn: count,
+      options: {
+        wait: 500,
+        maxSize: 10,
       },
     });
 
@@ -40,10 +48,25 @@ export const Route = createFileRoute('/states')({
       window: 2000,
     });
 
-    // const [] = createBatcher()
+    const { last: countQueue25_500 } = listenQueue({
+      fn: count,
+      options: {
+        maxSize: 25,
+        started: false,
+        wait: 500,
+      },
+    });
+    const { last: countQueue10_1000 } = listenQueue({
+      fn: count,
+      options: {
+        maxSize: 10,
+        started: false,
+        wait: 1000,
+      },
+    });
 
     return (
-      <div class='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-14 p-4'>
+      <div class='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 px-4'>
         <BtnGroup
           title='Hello Counters - normal !'
           value={count}
@@ -67,13 +90,31 @@ export const Route = createFileRoute('/states')({
 
         <BtnGroup
           title='Hello batch (4 by 600 ms) !'
-          value={countBatch}
+          value={countBatch4_600}
+          {...handlers}
+        />
+
+        <BtnGroup
+          title='Hello batch (10 by 500 ms) !'
+          value={countBatch10_500}
           {...handlers}
         />
 
         <BtnGroup
           title='Hello Rate Limited (5 per 2000 ms) !'
           value={countRateLimited}
+          {...handlers}
+        />
+
+        <BtnGroup
+          title='Hello Queuer (25, wait each 500 ms) !'
+          value={countQueue25_500}
+          {...handlers}
+        />
+
+        <BtnGroup
+          title='Hello Queuer (10, wait each 1000 ms) !'
+          value={countQueue10_1000}
           {...handlers}
         />
       </div>

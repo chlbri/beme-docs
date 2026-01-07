@@ -1,3 +1,4 @@
+export * from './batch';
 export * from './circular';
 export * from './counter';
 export * from './createTyping';
@@ -6,6 +7,7 @@ export * from './focus';
 export * from './intersect';
 // export * from './lang';
 export * from './links';
+export * from './queue';
 export * from './ressource';
 export * from './scroll';
 export * from './sleep';

@@ -15,12 +15,18 @@ export const BtnGroup: Component<BtnGroupProps> = props => {
 
   return (
     <div
-      class='flex flex-col mt-5 space-y-4 ring ring-blue-500 p-4 rounded-lg'
-      classList={{ 'ring-4 ring-red-400 ring-offset-4': changed() }}
+      class='relative flex flex-col mt-5 space-y-4 ring-2 ring-blue-500 p-4 transition duration-150 ease-in-out'
+      classList={{ 'ring-4 ring-red-400': changed() }}
     >
+      <div
+        class='absolute -z-10 top-2 right-2 text-3xl opacity-55 font-black items-center justify-center flex text-slate-700 select-none'
+        classList={{ 'text-red-400!': changed() }}
+      >
+        {props.value()}
+      </div>
       <h2
         class='text-base text-blue-500'
-        classList={{ 'text-red-400': changed() }}
+        classList={{ 'text-slate-400': changed() }}
       >
         {props.title}
       </h2>
@@ -28,22 +34,22 @@ export const BtnGroup: Component<BtnGroupProps> = props => {
         <Btn
           children='Increment : '
           onClick={props.increment}
-          class='text-xs px-3 py-1.5 rounded-md'
+          class='text-xs px-3 py-1.5 rounded-none'
         />
         <Btn
           children='Increment (+5) : '
           onClick={props.incrementByFive}
-          class='text-xs px-3 py-2 rounded-md'
+          class='text-xs px-3 py-2 rounded-none'
         />
         <Btn
           children='Decrement : '
           onClick={props.decrement}
-          class='text-xs px-3 py-2 rounded-md'
+          class='text-xs px-3 py-2 rounded-none'
         />
         <Btn
           children='Decrement by (-7) : '
           onClick={props.decrementBySeven}
-          class='text-xs px-3 py-2 rounded-md'
+          class='text-xs px-3 py-2 rounded-none'
         />
       </div>
     </div>
