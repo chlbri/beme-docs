@@ -1,6 +1,6 @@
 {
-  "name": "//TODO",
-  "version": "0.0.1",
+  "name": "@bemedev/docs",
+  "version": "0.0.3",
   "private": true,
   "sideEffects": false,
   "type": "module",
