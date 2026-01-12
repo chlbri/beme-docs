@@ -13,7 +13,7 @@ export const Footer: Component = () => {
         >
           beme.dev
         </a>{' '}
-        ·{' 2025'}
+        ·{' 2026'}
       </p>
     </div>
   );

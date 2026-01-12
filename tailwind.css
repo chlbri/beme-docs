@@ -1,9 +1,15 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @plugin 'tailwindcss-animate';
+@import '@toolwind/anchors';
+@plugin "@toolwind/corner-shape";
 @import './tailwind.polices.css';
 @import './tailwind.markdown.css';
 @import './tailwind.animations.css';
+
+html {
+  interpolate-size: allow-keywords;
+}
 
 @theme {
   /* Container configuration */
