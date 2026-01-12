@@ -27,7 +27,7 @@ export const NavBlurImage: Component<Props> = props => {
                anchor-name: --hovered-link;
    
                @supports (corner-shape: squircle) {
-                 border-radius: 24px;
+                 border-radius: 54px;
                  corner-shape: squircle;
                }
    
@@ -122,7 +122,12 @@ export const NavBlurImage: Component<Props> = props => {
     <>
       <style>{css}</style>
       <div class={props.class}>
-        <nav class={cn('bg-black/80', props.navClass)}>
+        <nav
+          class={cn(
+            'bg-black/80 space-x-6 px-20 py-3 mx-auto w-fit',
+            props.navClass,
+          )}
+        >
           <ul>
             <For each={props.list}>
               {item => (
