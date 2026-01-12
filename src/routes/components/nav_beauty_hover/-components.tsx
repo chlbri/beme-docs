@@ -25,6 +25,7 @@ export const NavBlurImage: Component<Props> = props => {
              & > nav {
                isolation: isolate;
                anchor-name: --hovered-link;
+               border-radius: 24px;
    
                @supports (corner-shape: squircle) {
                  border-radius: 54px;
