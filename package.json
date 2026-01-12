@@ -77,6 +77,8 @@
     "@solidjs/testing-library": "^0.8.10",
     "@tanstack/nitro-v2-vite-plugin": "1.141.0",
     "@tanstack/solid-router-devtools": "1.145.7",
+    "@toolwind/anchors": "^1.0.10",
+    "@toolwind/corner-shape": "0.0.8-3",
     "@types/clone-deep": "^4.0.4",
     "@types/node": "^25.0.3",
     "@typescript-eslint/eslint-plugin": "^8.52.0",
