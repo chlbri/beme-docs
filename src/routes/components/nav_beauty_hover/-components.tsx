@@ -5,7 +5,7 @@ type Props = {
   list: string[];
   class?: string;
   bgImageUrl: string;
-  navClass?: string;
+  nav_class?: string;
 };
 
 export const NavBlurImage: Component<Props> = props => {
@@ -17,28 +17,19 @@ export const NavBlurImage: Component<Props> = props => {
            :root {
              --url-img: url('${props.bgImageUrl}');
            }
-   
+
            div:has(> nav) {
              background-image: var(--url-img);
              background-attachment: fixed;
-   
+
              & > nav {
                isolation: isolate;
                anchor-name: --hovered-link;
 
-               @supports not (corner-shape: squircle) {
-                 border-radius: 54px;
-               }
-   
-               @supports (corner-shape: squircle) {
-                 border-radius: 54px;
-                 corner-shape: squircle;
-               }
-   
                & li:hover {
                  anchor-name: --hovered-link;
                }
-   
+
                &::before,
                &::after {
                  content: '';
@@ -66,53 +57,53 @@ export const NavBlurImage: Component<Props> = props => {
                      1
                    );
                }
-   
+
                &::before {
                  z-index: -1;
                  background: rgb(0 0 0 / 0.2);
                  backdrop-filter: blur(2px);
                }
-   
+
                &::after {
                  z-index: -2;
                  background-image: var(--url-img);
                  background-attachment: fixed;
                }
-   
+
                &:has(a:hover)::before,
                &:has(a:hover)::after {
                  top: anchor(top);
                  left: anchor(left);
                  right: anchor(right);
                  bottom: anchor(bottom);
-   
+
                  @supports (corner-shape: squircle) {
                    corner-shape: squircle;
                    border-radius: 50%;
                  }
                }
-   
+
                &:has(li:first-of-type a:hover)::before,
                &:has(li:first-of-type a:hover)::after {
                  @supports (corner-shape: squircle) {
                    border-radius: 20px 50% 50% 20px;
                  }
                }
-   
+
                &:has(li:last-of-type a:hover)::before,
                &:has(li:last-of-type a:hover)::after {
                  @supports (corner-shape: squircle) {
                    border-radius: 50% 20px 20px 50%;
                  }
                }
-   
+
                & > ul {
                  padding: 0;
                  margin: 0;
                  list-style: none;
                  display: flex;
                }
-   
+
                & a {
                  display: block;
                  padding: 1rem;
@@ -129,7 +120,7 @@ export const NavBlurImage: Component<Props> = props => {
         <nav
           class={cn(
             'bg-black/80 space-x-6 px-20 py-3 mx-auto w-fit',
-            props.navClass,
+            props.nav_class,
           )}
         >
           <ul>
