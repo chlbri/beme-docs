@@ -1,11 +1,10 @@
 @import 'tailwindcss';
 @import '@toolwind/anchors';
-@plugin "@toolwind/corner-shape";
 @import 'tw-animate-css';
-@plugin 'tailwindcss-animate';
 @import './tailwind.polices.css';
 @import './tailwind.markdown.css';
 @import './tailwind.animations.css';
+@plugin 'tailwindcss-animate';
 
 @theme {
   /* Container configuration */
