@@ -7,10 +7,12 @@
 @plugin "@toolwind/corner-shape";
 
 @theme {
-  /* Container configuration */
+  /* Media queries */
   --breakpoint-xs: 18rem; /* 288px */
   --breakpoint-2xl: 87.5rem; /* 1400px */
   --breakpoint-3xl: 112.5rem; /* 1950px */
+
+  /* Container configuration */
   --container-8xl: 90rem; /* 1440px */
   --container-9xl: 100rem; /* 1600px */
   --container-10xl: 112.5rem; /* 1800px */
@@ -19,6 +21,11 @@
   --container-5xs: 8rem; /* 128px */
   --container-6xs: 7rem; /* 112px */
   --container-7xs: 6rem; /* 96px */
+
+  /* Border radius configuration */
+  --radius-5xl: 3rem; /* 48px */
+  --radius-6xl: 3.5rem; /* 56px */
+  --radius-7xl: 4rem; /* 64px */
 }
 
 @custom-variant dark (&:is(.dark *));
