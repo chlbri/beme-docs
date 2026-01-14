@@ -250,7 +250,7 @@ export const EventLoop: Component<Props> = props => {
           {/* Left Column: Code & Console */}
           <div class='w-full lg:w-1/3 flex flex-col gap-4 h-full'>
             {/* Code Editor */}
-            <div class='bg-[#161b22] border border-gray-700 rounded-lg overflow-hidden flex flex-col h-1/2 w-full'>
+            <div class='bg-[#161b22] border border-gray-700 rounded-lg flex flex-col h-1/2 w-full'>
               <div class='bg-[#0d1117] px-3 py-2 border-b border-gray-700 text-xs text-gray-400 flex items-center justify-between'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -283,7 +283,7 @@ export const EventLoop: Component<Props> = props => {
                 </svg>
               </div>
               <div
-                class='p-3 font-mono text-2xs leading-relaxed overflow-auto relative flex-1 text-start flex flex-col select-none'
+                class='p-3 font-mono text-2xs leading-relaxed overflow-auto no-scrollbar relative flex-1 text-start flex flex-col select-none'
                 ref={setScrollRef}
               >
                 <div>
