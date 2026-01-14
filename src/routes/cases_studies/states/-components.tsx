@@ -6,8 +6,8 @@ import {
   Show,
   type Component,
 } from 'solid-js';
-import { createBtn } from './-states.hooks';
-import type { BtnGroupProps } from './-states.types';
+import { createBtn } from './-hooks';
+import type { BtnGroupProps } from './-types';
 
 export const BtnGroup: Component<BtnGroupProps> = props => {
   const Btn = createBtn(props.value);

@@ -6,10 +6,10 @@ import {
 import { createFileRoute } from '@tanstack/solid-router';
 import { listenQueue } from '~/globals/ui/signals';
 import { listenBatcher } from '~/globals/ui/signals/batch';
-import { BtnGroup } from './-states.components';
-import { useHook } from './-states.hooks';
+import { BtnGroup } from './-components';
+import { useHook } from './-hooks';
 
-export const Route = createFileRoute('/states')({
+export const Route = createFileRoute('/cases_studies/states/')({
   // Test data from loader
   loader: () => 15,
   component: () => {
