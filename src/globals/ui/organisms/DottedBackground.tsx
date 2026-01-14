@@ -1,4 +1,9 @@
-import { createEffect, createSignal, type Component } from 'solid-js';
+import {
+  createEffect,
+  createSignal,
+  onMount,
+  type Component,
+} from 'solid-js';
 import { COLOR_PRIMARY } from '../constants';
 
 type Props = {
@@ -12,7 +17,7 @@ export const DottedBackground: Component<Props> = ({
   const [context, setContext] =
     createSignal<CanvasRenderingContext2D | null>(null);
 
-  createEffect(() => {
+  onMount(() => {
     if (!canvasRef) return;
 
     const canvas = canvasRef;

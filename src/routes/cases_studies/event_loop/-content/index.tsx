@@ -17,6 +17,7 @@ import { Syntax } from './Syntax';
 import { useHooks, type Props } from './hooks';
 import type { Item } from './types';
 import { createScroll } from '~signals/scroll';
+import { DottedBackground } from '~/globals/ui/organisms/DottedBackground';
 
 // #region Directives ts-hack
 {
@@ -221,8 +222,9 @@ export const EventLoop: Component<Props> = props => {
   );
 
   return (
-    <div class='bg-[#0d1117] text-white p-4 font-sans h-full grow min-w-7xl w-full'>
-      <div class='max-w-7xl mx-auto'>
+    <div class='bg-[#0d1117]/90 text-white p-4 font-sans h-full grow min-w-7xl w-full'>
+      <div class='max-w-7xl mx-auto relative'>
+        <DottedBackground fillColor='white' />
         <div class='flex justify-between items-center mb-8'>
           <h1 class='text-2xl font-bold text-gray-200'>
             Event Loop Visualization

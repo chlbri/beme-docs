@@ -37,7 +37,7 @@ export const Route = createRootRoute({
           <HydrationScript />
         </head>
 
-        <body class='flex flex-col min-h-screen p-2'>
+        <body class='flex flex-col min-h-screen p-3'>
           <HeadContent />
           <DottedBackground />
           <HeadLinksDemo />
