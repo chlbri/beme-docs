@@ -1,9 +1,4 @@
-import {
-  createEffect,
-  createSignal,
-  onMount,
-  type Component,
-} from 'solid-js';
+import { createSignal, onMount, type Component } from 'solid-js';
 import { COLOR_PRIMARY } from '../constants';
 
 type Props = {
