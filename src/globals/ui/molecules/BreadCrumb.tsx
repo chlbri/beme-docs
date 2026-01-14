@@ -1,5 +1,5 @@
 import { Link, useLocation } from '@tanstack/solid-router';
-import { type Component, type JSX, For, Show, createMemo } from 'solid-js';
+import { type Component, type JSX, For, Show } from 'solid-js';
 import { cn } from '~cn/utils';
 import type { OmitPropsOf } from '../types';
 
@@ -46,14 +46,14 @@ const defaultFormatLabel = (segment: string): string => {
     .join(' ');
 };
 
-export const BreadCrumb: Component<BreadCrumbProps> = props => {
+export const BreadCrumbs: Component<BreadCrumbProps> = props => {
   const location = useLocation();
 
   const home = props.home ?? (
-    <span class='font-bold text-purple-600'>Home</span>
+    <span class='font-bold text-primary text-lg'>Home</span>
   );
 
-  const breadcrumbs = createMemo<BreadCrumbItem[]>(() => {
+  const breadcrumbs = () => {
     const pathname = location().pathname;
 
     // Split pathname and filter empty segments
@@ -88,7 +88,7 @@ export const BreadCrumb: Component<BreadCrumbProps> = props => {
     });
 
     return items;
-  });
+  };
 
   const separator = props.separator ?? '/';
 
@@ -126,7 +126,7 @@ export const BreadCrumb: Component<BreadCrumbProps> = props => {
                 </Link>
                 <span
                   class={cn(
-                    'text-muted-foreground select-none',
+                    'text-zinc-300 select-none text-xl font-thin',
                     props.separatorClass,
                   )}
                   aria-hidden='true'
