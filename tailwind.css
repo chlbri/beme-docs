@@ -26,6 +26,9 @@
   --radius-5xl: 3rem; /* 48px */
   --radius-6xl: 3.5rem; /* 56px */
   --radius-7xl: 4rem; /* 64px */
+
+  /* Colors */
+  --color-primary: #582ab6;
 }
 
 @custom-variant dark (&:is(.dark *));

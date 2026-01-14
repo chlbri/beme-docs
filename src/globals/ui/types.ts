@@ -38,6 +38,10 @@ export type PiC<
 
 export type RootLink = JSX.HTMLElementTags['link'];
 export type LinkTo = keyof FileRoutesByTo;
+export type EnhancedLink = {
+  label: string;
+  href: LinkTo;
+};
 
 export type ExtractParams<TTo extends string> =
   TTo extends `${string}$${infer Param}/${infer Rest}`

@@ -17,9 +17,13 @@ type AnimationCardProps = {
 const AnimationCard: Component<AnimationCardProps> = props => {
   const [state, setState] = createSignal<AnimationState>('playing');
 
+  const [overflowed, setOverRef] = isOverFlowed.x();
+  const noBorder = props.animation.id === 'color-shift';
+
   const handleStart = () => setState('playing');
   const handlePause = () => setState('paused');
   const handleStop = () => setState('stopped');
+
   const handleReset = () => {
     setState('stopped');
     setTimeout(() => setState('playing'), 50);
@@ -33,13 +37,9 @@ const AnimationCard: Component<AnimationCardProps> = props => {
     return 'running';
   };
 
-  const [overflowed, setOverRef] = isOverFlowed.x();
-
-  const noBorder = props.animation.id === 'color-shift';
-
   return (
-    <article class='border border-yellow-900 overflow-hidden hover:shadow-lg transition-shadow duration-300'>
-      <div class='h-50 bg-muted flex items-center justify-center  overflow-hidden'>
+    <article class='border border-yellow-900 overflow-hidden hover:shadow-lg transition-shadow duration-300 bg-white/75'>
+      <div class='h-50 flex items-center justify-center  overflow-hidden'>
         <Show
           when={props.animation.type === 'text'}
           fallback={
