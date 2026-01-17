@@ -40,11 +40,14 @@ export const Route = createRootRoute({
         <body class='flex flex-col min-h-screen p-5'>
           <HeadContent />
           <DottedBackground />
-          <Navigation logo='beme.docs' links={[
-            {href:'/animations', label:'Animations'},
-            {href:'/components', label:'Components'},
-            {href:'/cases_studies', label:'Case Studies'},
-          ]} />
+          <Navigation
+            logo='beme.docs'
+            links={[
+              { href: '/animations', label: 'Animations' },
+              { href: '/components', label: 'Components' },
+              { href: '/cases_studies', label: 'Case Studies' },
+            ]}
+          />
           <main class='grow text-center pt-15'>
             <BreadCrumbs class='mb-2' />
             <Outlet />
