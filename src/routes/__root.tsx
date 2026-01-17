@@ -1,18 +1,18 @@
 /// <reference types="vite/client" />
 
-import seo from '~seo';
 import {
   createRootRoute,
-  Outlet,
   HeadContent,
+  Outlet,
   Scripts,
 } from '@tanstack/solid-router';
 import { TanStackRouterDevtools } from '@tanstack/solid-router-devtools';
-import appCss from '../../tailwind.css?url';
-import { HeadLinksDemo } from '~ui/organisms/HeadLinks';
 import { HydrationScript } from 'solid-js/web';
+import { Navigation } from '~/globals/ui/organisms/Navigation';
+import seo from '~seo';
 import { BreadCrumbs, Footer } from '~ui/molecules';
 import { DottedBackground } from '~ui/organisms/DottedBackground';
+import appCss from '../../tailwind.css?url';
 
 export const Route = createRootRoute({
   head: () => ({
@@ -37,11 +37,18 @@ export const Route = createRootRoute({
           <HydrationScript />
         </head>
 
-        <body class='flex flex-col min-h-screen p-3'>
+        <body class='flex flex-col min-h-screen p-5'>
           <HeadContent />
           <DottedBackground />
-          <HeadLinksDemo />
-          <main class='grow text-center'>
+          <Navigation
+            logo='beme.docs'
+            links={[
+              { href: '/animations', label: 'Animations' },
+              { href: '/components', label: 'Components' },
+              { href: '/cases_studies', label: 'Case Studies' },
+            ]}
+          />
+          <main class='grow text-center pt-15'>
             <BreadCrumbs class='mb-2' />
             <Outlet />
           </main>

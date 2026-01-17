@@ -3,6 +3,7 @@
 
 #For Libraries
 lib
+.pnpm-store/
 
 #content-collections
 .content-collections
