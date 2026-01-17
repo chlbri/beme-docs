@@ -1,0 +1,136 @@
+{
+  "name": "beme-docs",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "postCreateCommand": "corepack enable && corepack prepare pnpm@latest --activate && pnpm install",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "github-actions.workflows.pinned.workflows": [
+          ".github/workflows/ci.yml"
+        ],
+        "chat.tools.terminal.autoApprove": {
+          "/^code --list-extensions$/": {
+            "approve": true,
+            "matchCommandLine": true
+          }
+        },
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "typescript.preferences.preferTypeOnlyAutoImports": true,
+        "typescript.updateImportsOnFileMove.enabled": "always",
+        "files.associations": {
+          "*.css": "tailwindcss"
+        }
+      },
+      "extensions": [
+        "1yib.rust-bundle",
+        "aaron-bond.better-comments",
+        "adam-bender.commit-message-editor",
+        "andaviaco.copy-path",
+        "anseki.vscode-color",
+        "astro-build.astro-vscode",
+        "bourhaouta.tailwindshades",
+        "bradlc.vscode-tailwindcss",
+        "christian-kohler.npm-intellisense",
+        "christian-kohler.path-intellisense",
+        "codesandbox-io.codesandbox-projects",
+        "cweijan.vscode-office",
+        "dbaeumer.vscode-eslint",
+        "deerawan.vscode-faker",
+        "docker.docker",
+        "drknoxy.eslint-disable-snippets",
+        "dsznajder.es7-react-js-snippets",
+        "dustypomerleau.rust-syntax",
+        "edonet.vscode-command-runner",
+        "eliostruyf.vscode-demo-time",
+        "esbenp.prettier-vscode",
+        "figma.figma-vscode-extension",
+        "fill-labs.dependi",
+        "formulahendry.auto-rename-tag",
+        "formulahendry.code-runner",
+        "foxundermoon.shell-format",
+        "github.codespaces",
+        "github.copilot",
+        "github.copilot-chat",
+        "github.vscode-github-actions",
+        "github.vscode-pull-request-github",
+        "gitpod.gitpod-desktop",
+        "gitpod.gitpod-flex",
+        "gruntfuggly.todo-tree",
+        "hbenl.vscode-test-explorer",
+        "johnpapa.vscode-peacock",
+        "kisstkondoros.vscode-gutter-preview",
+        "marclipovsky.string-manipulation",
+        "mechatroner.rainbow-csv",
+        "meganrogge.template-string-converter",
+        "mhutchie.git-graph",
+        "mikestead.dotenv",
+        "mohsen1.prettify-json",
+        "mongodb.mongodb-vscode",
+        "ms-azuretools.vscode-docker",
+        "ms-ceintl.vscode-language-pack-fr",
+        "ms-playwright.playwright",
+        "ms-python.debugpy",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.vscode-python-envs",
+        "ms-vscode.extension-test-runner",
+        "ms-vscode.live-server",
+        "ms-vscode.test-adapter-converter",
+        "mxsdev.typescript-explorer",
+        "mylesmurphy.prettify-ts",
+        "naumovs.color-highlight",
+        "nicoespeon.abracadabra",
+        "orta.vscode-twoslash-queries",
+        "pkief.material-icon-theme",
+        "pkief.material-product-icons",
+        "planbcoding.vscode-react-refactor",
+        "quicktype.quicktype",
+        "redhat.vscode-yaml",
+        "rioj7.commandonallfiles",
+        "ritwickdey.liveserver",
+        "rust-lang.rust-analyzer",
+        "steoates.autoimport",
+        "stivo.tailwind-fold",
+        "swellaby.vscode-rust-test-adapter",
+        "tamasfe.even-better-toml",
+        "tauri-apps.tauri-vscode",
+        "timheuer.awesome-copilot",
+        "tomoki1207.pdf",
+        "uctakeoff.vscode-counter",
+        "unifiedjs.vscode-mdx",
+        "vitest.explorer",
+        "vkrsi.code-screenshot",
+        "vsls-contrib.gistfs",
+        "wix.vscode-import-cost",
+        "yatki.vscode-surround",
+        "yoavbls.pretty-ts-errors",
+        "zhangciwu.swig-tpl",
+        "zignd.html-css-class-completion"
+      ]
+    }
+  },
+  "forwardPorts": [3000, 5173],
+  "portsAttributes": {
+    "3000": {
+      "label": "Application",
+      "onAutoForward": "notify"
+    },
+    "5173": {
+      "label": "Vite Dev Server",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "remoteUser": "node"
+}
