@@ -9,11 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as DemoRouteImport } from './routes/demo'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ComponentsIndexRouteImport } from './routes/components/index'
 import { Route as Cases_studiesIndexRouteImport } from './routes/cases_studies/index'
 import { Route as AnimationsIndexRouteImport } from './routes/animations/index'
+import { Route as ComponentsTooltipRouteImport } from './routes/components/tooltip'
 import { Route as ComponentsBorderHoverRouteImport } from './routes/components/border-hover'
 import { Route as ComponentsNav_beauty_hoverIndexRouteImport } from './routes/components/nav_beauty_hover/index'
 import { Route as ComponentsLogin_beauty1IndexRouteImport } from './routes/components/login_beauty1/index'
@@ -21,11 +21,6 @@ import { Route as ComponentsGraphicCharter1IndexRouteImport } from './routes/com
 import { Route as Cases_studiesStatesIndexRouteImport } from './routes/cases_studies/states/index'
 import { Route as Cases_studiesEvent_loopIndexRouteImport } from './routes/cases_studies/event_loop/index'
 
-const DemoRoute = DemoRouteImport.update({
-  id: '/demo',
-  path: '/demo',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -44,6 +39,11 @@ const Cases_studiesIndexRoute = Cases_studiesIndexRouteImport.update({
 const AnimationsIndexRoute = AnimationsIndexRouteImport.update({
   id: '/animations/',
   path: '/animations/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsTooltipRoute = ComponentsTooltipRouteImport.update({
+  id: '/components/tooltip',
+  path: '/components/tooltip',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ComponentsBorderHoverRoute = ComponentsBorderHoverRouteImport.update({
@@ -84,8 +84,8 @@ const Cases_studiesEvent_loopIndexRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/demo': typeof DemoRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
+  '/components/tooltip': typeof ComponentsTooltipRoute
   '/animations': typeof AnimationsIndexRoute
   '/cases_studies': typeof Cases_studiesIndexRoute
   '/components': typeof ComponentsIndexRoute
@@ -97,8 +97,8 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/demo': typeof DemoRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
+  '/components/tooltip': typeof ComponentsTooltipRoute
   '/animations': typeof AnimationsIndexRoute
   '/cases_studies': typeof Cases_studiesIndexRoute
   '/components': typeof ComponentsIndexRoute
@@ -111,8 +111,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/demo': typeof DemoRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
+  '/components/tooltip': typeof ComponentsTooltipRoute
   '/animations/': typeof AnimationsIndexRoute
   '/cases_studies/': typeof Cases_studiesIndexRoute
   '/components/': typeof ComponentsIndexRoute
@@ -126,8 +126,8 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/demo'
     | '/components/border-hover'
+    | '/components/tooltip'
     | '/animations'
     | '/cases_studies'
     | '/components'
@@ -139,8 +139,8 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/demo'
     | '/components/border-hover'
+    | '/components/tooltip'
     | '/animations'
     | '/cases_studies'
     | '/components'
@@ -152,8 +152,8 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/demo'
     | '/components/border-hover'
+    | '/components/tooltip'
     | '/animations/'
     | '/cases_studies/'
     | '/components/'
@@ -166,8 +166,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DemoRoute: typeof DemoRoute
   ComponentsBorderHoverRoute: typeof ComponentsBorderHoverRoute
+  ComponentsTooltipRoute: typeof ComponentsTooltipRoute
   AnimationsIndexRoute: typeof AnimationsIndexRoute
   Cases_studiesIndexRoute: typeof Cases_studiesIndexRoute
   ComponentsIndexRoute: typeof ComponentsIndexRoute
@@ -180,13 +180,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/solid-router' {
   interface FileRoutesByPath {
-    '/demo': {
-      id: '/demo'
-      path: '/demo'
-      fullPath: '/demo'
-      preLoaderRoute: typeof DemoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -213,6 +206,13 @@ declare module '@tanstack/solid-router' {
       path: '/animations'
       fullPath: '/animations'
       preLoaderRoute: typeof AnimationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/tooltip': {
+      id: '/components/tooltip'
+      path: '/components/tooltip'
+      fullPath: '/components/tooltip'
+      preLoaderRoute: typeof ComponentsTooltipRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/border-hover': {
@@ -262,8 +262,8 @@ declare module '@tanstack/solid-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DemoRoute: DemoRoute,
   ComponentsBorderHoverRoute: ComponentsBorderHoverRoute,
+  ComponentsTooltipRoute: ComponentsTooltipRoute,
   AnimationsIndexRoute: AnimationsIndexRoute,
   Cases_studiesIndexRoute: Cases_studiesIndexRoute,
   ComponentsIndexRoute: ComponentsIndexRoute,

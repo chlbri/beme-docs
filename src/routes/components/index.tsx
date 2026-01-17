@@ -39,6 +39,13 @@ const COMPONENTS: ComponentItem[] = [
       'An attractive navigation component featuring interactive hover effects.',
     path: '/components/nav_beauty_hover',
   },
+  {
+    id: 'tooltip',
+    name: 'Tooltip',
+    description:
+      'A versatile tooltip component that provides informative hover effects.',
+    path: '/components/tooltip',
+  },
 ];
 
 const ComponentCard: Component<{ item: ComponentItem }> = props => {
