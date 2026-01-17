@@ -12,7 +12,7 @@ export const Navigation: Component<NavigationProps> = props => {
   const [isMenuOpen, setIsMenuOpen] = createSignal(false);
 
   return (
-    <nav class='fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-lg border-b border-border  '>
+    <nav class='fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-lg border-b border-border w-screen'>
       <div class='max-w-7xl mx-auto px-4 py-4'>
         <div class='flex items-center justify-between'>
           {/* Logo */}
