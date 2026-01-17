@@ -80,6 +80,9 @@ export const Navigation: Component<NavigationProps> = props => {
                   to={link.href}
                   class='block py-2 text-foreground hover:text-primary transition-colors'
                   onClick={() => setIsMenuOpen(false)}
+                  activeProps={{
+                    class: 'text-primary',
+                  }}
                 >
                   {link.label}
                 </Link>

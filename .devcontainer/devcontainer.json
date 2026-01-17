@@ -6,8 +6,7 @@
       "version": "3.12"
     },
     "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "postCreateCommand": "corepack enable && corepack prepare pnpm@latest --activate && pnpm install",
   "customizations": {
@@ -121,7 +120,10 @@
       ]
     }
   },
-  "forwardPorts": [3000, 5173],
+  "forwardPorts": [
+    3000,
+    5173
+  ],
   "portsAttributes": {
     "3000": {
       "label": "Application",
