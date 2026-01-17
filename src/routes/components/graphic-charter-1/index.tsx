@@ -6,7 +6,7 @@ import {
   POLICES_DATA,
 } from './-content';
 
-export const Route = createFileRoute('/graphic-charter/attemp1/')({
+export const Route = createFileRoute('/components/graphic-charter-1/')({
   head: () => ({
     links: [
       // #region Google Fonts

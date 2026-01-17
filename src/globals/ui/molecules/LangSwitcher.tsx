@@ -29,7 +29,7 @@ export const LangSwitcher: Component = () => {
           </SelectValue>
         </div>
       </SelectTrigger>
-      <SelectContent class='' />
+      <SelectContent class='bg-white' />
     </Select>
   );
 };
