@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "dev:host": "pnpm run dev -- --host",
+    "dev:host": "pnpm run dev --host",
     "build": "vite build",
     "preview": "pnpm run build && vite start",
     "ci": "pnpm run config:off && pnpm run lint && pnpm run test && pnpm run p-q",
