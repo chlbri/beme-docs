@@ -7,7 +7,7 @@ import { LoginBeautyContent1 } from './-content';
 
 export const Route = createFileRoute('/components/login_beauty1/')({
   component: () => (
-    <div class='grid w-full content-center place-items-center h-full pt-12 grid-cols-1 xl:grid-cols-2 gap-x-10 gap-y-20'>
+    <div class='grid w-full content-center place-items-center h-full pt-12 grid-cols-1 xl:grid-cols-2 4xl:grid-cols-3 6xl:grid-cols-4 gap-x-10 gap-y-20'>
       <LoginBeautyContent1 color='#FF94B0' />
       <LoginBeautyContent1 />
       <LoginBeautyContent1 color='lightgray' />
