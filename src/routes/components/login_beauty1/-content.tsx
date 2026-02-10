@@ -89,18 +89,15 @@ export const LoginBeautyContent1: Component<Props> = ({
               'form',
             ) as HTMLFormElement;
 
-            let data = new FormData(_form);
-
+            const data = new FormData(_form);
             const inputs = _form.querySelectorAll('input');
+            handleSubmit?.(data);
 
             [...inputs]
               .filter(input => input.type !== 'submit')
               .forEach(input => {
                 input.value = '';
               });
-
-            handleSubmit?.(data);
-            data = new FormData(_form);
           }}
         />
       </form>
