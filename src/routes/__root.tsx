@@ -32,7 +32,7 @@ export const Route = createRootRoute({
 
   component: () => {
     return (
-      <html class='scroll-smooth'>
+      <html class='scroll-smooth [scrollbar-gutter:stable]'>
         <head>
           <HydrationScript />
         </head>

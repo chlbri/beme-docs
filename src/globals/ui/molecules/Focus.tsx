@@ -1,4 +1,5 @@
 import {
+  createSignal,
   onMount,
   type Component,
   type ComponentProps,
@@ -11,15 +12,15 @@ type FocusFn<T extends ValidComponent> = (
 
 function _focus<T extends Component<any>>(children: T, focus: FocusFn<T>) {
   const Out = (props => {
-    let ref: any;
+    const [ref, setRef] = createSignal<HTMLElement>();
 
     onMount(() => {
-      if (focus(props)) ref?.focus();
+      if (focus(props)) ref()?.focus();
     });
 
     const Compt = children;
 
-    return <Compt {...props} ref={ref} />;
+    return <Compt {...props} ref={setRef} />;
   }) as T;
 
   return Out;

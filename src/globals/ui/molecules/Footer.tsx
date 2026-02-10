@@ -15,7 +15,7 @@ type FooterProps = {
 
 export const Footer: Component<FooterProps> = props => {
   return (
-    <footer class='mt-3 text-center pt-1 border-t-2 border-zinc-400/30 pb-2 flex flex-col space-y-8'>
+    <footer class='mt-3 text-center pt-2 border-t-2 border-zinc-400/30 pb-2 flex flex-col space-y-8'>
       {props.sections && (
         <div class='grid grid-cols-2 md:grid-cols-4 gap-8'>
           <For each={props.sections}>

@@ -86,14 +86,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/components/border-hover': typeof ComponentsBorderHoverRoute
   '/components/tooltip': typeof ComponentsTooltipRoute
-  '/animations': typeof AnimationsIndexRoute
-  '/cases_studies': typeof Cases_studiesIndexRoute
-  '/components': typeof ComponentsIndexRoute
-  '/cases_studies/event_loop': typeof Cases_studiesEvent_loopIndexRoute
-  '/cases_studies/states': typeof Cases_studiesStatesIndexRoute
-  '/components/graphic-charter-1': typeof ComponentsGraphicCharter1IndexRoute
-  '/components/login_beauty1': typeof ComponentsLogin_beauty1IndexRoute
-  '/components/nav_beauty_hover': typeof ComponentsNav_beauty_hoverIndexRoute
+  '/animations/': typeof AnimationsIndexRoute
+  '/cases_studies/': typeof Cases_studiesIndexRoute
+  '/components/': typeof ComponentsIndexRoute
+  '/cases_studies/event_loop/': typeof Cases_studiesEvent_loopIndexRoute
+  '/cases_studies/states/': typeof Cases_studiesStatesIndexRoute
+  '/components/graphic-charter-1/': typeof ComponentsGraphicCharter1IndexRoute
+  '/components/login_beauty1/': typeof ComponentsLogin_beauty1IndexRoute
+  '/components/nav_beauty_hover/': typeof ComponentsNav_beauty_hoverIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -128,14 +128,14 @@ export interface FileRouteTypes {
     | '/'
     | '/components/border-hover'
     | '/components/tooltip'
-    | '/animations'
-    | '/cases_studies'
-    | '/components'
-    | '/cases_studies/event_loop'
-    | '/cases_studies/states'
-    | '/components/graphic-charter-1'
-    | '/components/login_beauty1'
-    | '/components/nav_beauty_hover'
+    | '/animations/'
+    | '/cases_studies/'
+    | '/components/'
+    | '/cases_studies/event_loop/'
+    | '/cases_studies/states/'
+    | '/components/graphic-charter-1/'
+    | '/components/login_beauty1/'
+    | '/components/nav_beauty_hover/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -190,21 +190,21 @@ declare module '@tanstack/solid-router' {
     '/components/': {
       id: '/components/'
       path: '/components'
-      fullPath: '/components'
+      fullPath: '/components/'
       preLoaderRoute: typeof ComponentsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cases_studies/': {
       id: '/cases_studies/'
       path: '/cases_studies'
-      fullPath: '/cases_studies'
+      fullPath: '/cases_studies/'
       preLoaderRoute: typeof Cases_studiesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/animations/': {
       id: '/animations/'
       path: '/animations'
-      fullPath: '/animations'
+      fullPath: '/animations/'
       preLoaderRoute: typeof AnimationsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
@@ -225,35 +225,35 @@ declare module '@tanstack/solid-router' {
     '/components/nav_beauty_hover/': {
       id: '/components/nav_beauty_hover/'
       path: '/components/nav_beauty_hover'
-      fullPath: '/components/nav_beauty_hover'
+      fullPath: '/components/nav_beauty_hover/'
       preLoaderRoute: typeof ComponentsNav_beauty_hoverIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/login_beauty1/': {
       id: '/components/login_beauty1/'
       path: '/components/login_beauty1'
-      fullPath: '/components/login_beauty1'
+      fullPath: '/components/login_beauty1/'
       preLoaderRoute: typeof ComponentsLogin_beauty1IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/components/graphic-charter-1/': {
       id: '/components/graphic-charter-1/'
       path: '/components/graphic-charter-1'
-      fullPath: '/components/graphic-charter-1'
+      fullPath: '/components/graphic-charter-1/'
       preLoaderRoute: typeof ComponentsGraphicCharter1IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cases_studies/states/': {
       id: '/cases_studies/states/'
       path: '/cases_studies/states'
-      fullPath: '/cases_studies/states'
+      fullPath: '/cases_studies/states/'
       preLoaderRoute: typeof Cases_studiesStatesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cases_studies/event_loop/': {
       id: '/cases_studies/event_loop/'
       path: '/cases_studies/event_loop'
-      fullPath: '/cases_studies/event_loop'
+      fullPath: '/cases_studies/event_loop/'
       preLoaderRoute: typeof Cases_studiesEvent_loopIndexRouteImport
       parentRoute: typeof rootRouteImport
     }

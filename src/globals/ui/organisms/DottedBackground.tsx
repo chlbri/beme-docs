@@ -1,21 +1,13 @@
-import { createSignal, onMount, type Component } from 'solid-js';
-import { COLOR_PRIMARY } from '../constants';
+import { createEffect, createSignal } from 'solid-js';
 
-type Props = {
-  fillColor?: string;
-};
-
-export const DottedBackground: Component<Props> = ({
-  fillColor = COLOR_PRIMARY,
-}) => {
-  let canvasRef: HTMLCanvasElement | undefined;
+export const DottedBackground = () => {
+  const [canvasRef, setCanvasRef] = createSignal<HTMLCanvasElement>();
   const [context, setContext] =
     createSignal<CanvasRenderingContext2D | null>(null);
 
-  onMount(() => {
-    if (!canvasRef) return;
-
-    const canvas = canvasRef;
+  createEffect(() => {
+    const canvas = canvasRef();
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -40,7 +32,7 @@ export const DottedBackground: Component<Props> = ({
       const dotRadius = 2;
       const gap = 40;
 
-      ctx.fillStyle = fillColor;
+      ctx.fillStyle = '#f97316';
       ctx.globalAlpha = 0.15;
 
       for (let x = 0; x < canvas.width; x += gap) {
@@ -64,7 +56,7 @@ export const DottedBackground: Component<Props> = ({
 
   return (
     <canvas
-      ref={canvasRef}
+      ref={setCanvasRef}
       class='fixed inset-0 top-0 left-0 pointer-events-none'
       style={{ 'z-index': '-1' }}
     />
