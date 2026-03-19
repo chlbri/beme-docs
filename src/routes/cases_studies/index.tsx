@@ -1,41 +1,13 @@
 import { createFileRoute, useNavigate } from '@tanstack/solid-router';
-import { For, type Component, createSignal, Show } from 'solid-js';
+import { Search } from 'lucide-solid';
+import { createSignal, For, Show, type Component } from 'solid-js';
 import { cn } from '~cn/utils';
-import { Zap, Brain, Search } from 'lucide-solid';
-
-interface CaseStudyItem {
-  id: string;
-  name: string;
-  description: string;
-  path: string;
-  icon: Component;
-  tags: string[];
-}
-
-const CASE_STUDIES: CaseStudyItem[] = [
-  {
-    id: 'event-loop',
-    name: 'Event Loop',
-    description:
-      'An interactive visualization of how the JavaScript event loop works, helping you understand asynchronous execution and the call stack.',
-    path: '/cases_studies/event_loop',
-    icon: Zap,
-    tags: ['JavaScript', 'Async', 'Education'],
-  },
-  {
-    id: 'states',
-    name: 'State Management',
-    description:
-      'A comprehensive exploration of different state management patterns and hooks in modern frameworks.',
-    path: '/cases_studies/states',
-    icon: Brain,
-    tags: ['State', 'Hooks', 'Patterns'],
-  },
-];
+import { CASE_STUDIES } from './-data';
+import { CaseStudyItem } from './-types';
 
 const CaseStudyCard: Component<{ item: CaseStudyItem }> = props => {
   const navigate = useNavigate();
-  const IconComponent = props.item.icon;
+  const Icon = props.item.icon;
 
   return (
     <article
@@ -58,7 +30,7 @@ const CaseStudyCard: Component<{ item: CaseStudyItem }> = props => {
         <div class='flex items-center gap-3'>
           <div class='p-2 bg-orange-400/10 rounded-lg group-hover:bg-orange-400/20 transition-colors'>
             <div class='text-orange-400 w-6 h-6'>
-              <IconComponent />
+              <Icon />
             </div>
           </div>
           <h3 class='text-lg font-semibold text-gray-900 dark:text-white group-hover:text-orange-400 transition-colors'>

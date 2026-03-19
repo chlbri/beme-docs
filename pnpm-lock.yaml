@@ -40,6 +40,9 @@ importers:
       '@tanstack/pacer-lite':
         specifier: ^0.2.1
         version: 0.2.1
+      '@tanstack/solid-hotkeys':
+        specifier: ^0.4.2
+        version: 0.4.2(solid-js@1.9.11)
       '@tanstack/solid-pacer':
         specifier: ^0.19.0
         version: 0.19.0(solid-js@1.9.11)
@@ -2831,6 +2834,13 @@ packages:
       }
     engines: { node: '>=20.19' }
 
+  '@tanstack/hotkeys@0.4.2':
+    resolution:
+      {
+        integrity: sha512-dCCu6Q91wZ2Mz7Vb+tzzpbKH0cSY9JXqJS7ZyouxewNL8oVmI228P9BmP94/1255g5WjPS+njenyrbWVeEQP5Q==,
+      }
+    engines: { node: '>=18' }
+
   '@tanstack/pacer-lite@0.2.1':
     resolution:
       {
@@ -2904,6 +2914,15 @@ packages:
         integrity: sha512-nRcYw+w2OEgK6VfjirYvGyPLOK+tZQz1jkYcmH5AjMamQ9PycnlxZF2aEZtPpNoUsaceX2bHptn6Ub5hGXqNvw==,
       }
     engines: { node: '>=20.19' }
+
+  '@tanstack/solid-hotkeys@0.4.2':
+    resolution:
+      {
+        integrity: sha512-HelOz/mnCZ6Q5n4udwVr/U6o7gEWt8mIKdzxxsMKS42nLK64moTZrO5FLFTsiCgUZS9Vm2N14mQ+6a7ha3Y0yQ==,
+      }
+    engines: { node: '>=18' }
+    peerDependencies:
+      solid-js: '>=1.7.0'
 
   '@tanstack/solid-pacer@0.19.0':
     resolution:
@@ -9838,6 +9857,10 @@ snapshots:
 
   '@tanstack/history@1.161.6': {}
 
+  '@tanstack/hotkeys@0.4.2':
+    dependencies:
+      '@tanstack/store': 0.9.2
+
   '@tanstack/pacer-lite@0.2.1': {}
 
   '@tanstack/pacer@0.19.0':
@@ -9911,6 +9934,12 @@ snapshots:
       tinyglobby: 0.2.15
     transitivePeerDependencies:
       - supports-color
+
+  '@tanstack/solid-hotkeys@0.4.2(solid-js@1.9.11)':
+    dependencies:
+      '@tanstack/hotkeys': 0.4.2
+      '@tanstack/solid-store': 0.9.2(solid-js@1.9.11)
+      solid-js: 1.9.11
 
   '@tanstack/solid-pacer@0.19.0(solid-js@1.9.11)':
     dependencies:

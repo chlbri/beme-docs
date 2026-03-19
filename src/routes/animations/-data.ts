@@ -1,14 +1,6 @@
-export type AnimationData = {
-  id: string;
-  name: string;
-  description: string;
-  type: 'shape' | 'text';
-  animationClass: string;
-  duration: number;
-};
+import { AnimationData } from './types';
 
 export const animationsData: AnimationData[] = [
-  // Shape animations
   {
     id: 'fade-in',
     name: 'Fade In',
@@ -250,7 +242,48 @@ export const animationsData: AnimationData[] = [
     duration: 4,
   },
 
-  // Text animations
+  // New shape animations
+  {
+    id: 'spiral',
+    name: 'Spiral',
+    description: 'Element spirals in while growing from nothing',
+    type: 'shape',
+    animationClass: 'animate-[spiral_3s_ease-in-out_infinite]',
+    duration: 3,
+  },
+  {
+    id: 'squish',
+    name: 'Squish',
+    description: 'Element squishes and stretches in all directions',
+    type: 'shape',
+    animationClass: 'animate-[squish_1.5s_ease-in-out_infinite]',
+    duration: 1.5,
+  },
+  {
+    id: 'pendulum',
+    name: 'Pendulum',
+    description: 'Element swings side to side like a pendulum',
+    type: 'shape',
+    animationClass: 'animate-[pendulum_1.5s_ease-in-out_infinite]',
+    duration: 1.5,
+  },
+  {
+    id: 'neon-glow',
+    name: 'Neon Glow',
+    description: 'Element pulses with an intense neon orange glow',
+    type: 'shape',
+    animationClass: 'animate-[neon-glow_2s_ease-in-out_infinite]',
+    duration: 2,
+  },
+  {
+    id: 'flip-3d',
+    name: 'Flip 3D',
+    description: 'Element flips across both X and Y axes in 3D space',
+    type: 'shape',
+    animationClass: 'animate-[flip-3d_4s_ease-in-out_infinite]',
+    duration: 4,
+  },
+
   {
     id: 'text-typing',
     name: 'Typing Effect',
@@ -293,11 +326,47 @@ export const animationsData: AnimationData[] = [
     animationClass: 'animate-[text-blur-reveal_2s_ease-out_infinite]',
     duration: 2,
   },
-];
 
-export const BUTTON_CLASSES = {
-  start: 'bg-black text-white hover:bg-black/90',
-  pause: 'bg-slate-200 text-zinc-700 hover:bg-slate-200/90',
-  stop: 'bg-red-500 text-white hover:bg-red-500/90',
-  reset: 'bg-blue-100 text-blue-700',
-};
+  // New text animations
+  {
+    id: 'text-flicker',
+    name: 'Text Flicker',
+    description: 'Text flickers like a faulty neon sign',
+    type: 'text',
+    animationClass: 'animate-[text-flicker_3s_linear_infinite]',
+    duration: 3,
+  },
+  {
+    id: 'text-shadow-pulse',
+    name: 'Text Shadow Pulse',
+    description: 'Text glows and pulses with a radiant shadow',
+    type: 'text',
+    animationClass:
+      'text-orange-500 animate-[text-shadow-pulse_2s_ease-in-out_infinite]',
+    duration: 2,
+  },
+  {
+    id: 'text-bounce-in',
+    name: 'Text Bounce In',
+    description: 'Text bounces into view with elastic overshoot',
+    type: 'text',
+    animationClass: 'animate-[text-bounce-in_1.5s_ease-out_infinite]',
+    duration: 1.5,
+  },
+  {
+    id: 'text-slide-up-fade',
+    name: 'Text Slide Up & Fade',
+    description: 'Text slides up while fading in then out',
+    type: 'text',
+    animationClass: 'animate-[text-slide-up-fade_3s_ease-in-out_infinite]',
+    duration: 3,
+  },
+  {
+    id: 'text-color-cycle',
+    name: 'Text Color Cycle',
+    description: 'Text cycles smoothly through a spectrum of colors',
+    type: 'text',
+    animationClass: 'animate-[text-color-cycle_4s_linear_infinite]',
+    duration: 4,
+  },
+];

@@ -1,6 +1,4 @@
 import { createFileRoute } from '@tanstack/solid-router';
-import { AnimationsPage } from './-components';
+import { AnimationsPage as component } from './-components';
 
-export const Route = createFileRoute('/animations/')({
-  component: () => <AnimationsPage />,
-});
+export const Route = createFileRoute('/animations/')({ component });

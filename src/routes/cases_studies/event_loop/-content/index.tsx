@@ -106,7 +106,7 @@ export const EventLoop: Component<Props> = props => {
         stroke-width='3'
         stroke-linecap='round'
         stroke-linejoin='round'
-        class='absolute inset-0 flex items-center justify-center size-3.5 bg-orange-600 rounded-full p-0.25 -translate-y-1/2 left-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform duration-200 ease-in-out group-active:scale-95 cursor-pointer'
+        class='absolute inset-0 flex items-center justify-center size-3.5 bg-orange-600 rounded-full p-px -translate-y-1/2 left-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform duration-200 ease-in-out group-active:scale-95 cursor-pointer'
         onClick={() => {
           openModal(index() + 1);
         }}
@@ -123,7 +123,7 @@ export const EventLoop: Component<Props> = props => {
       use:clickOutside={closeModal}
     >
       <form
-        class='bg-gray-800 border border-gray-700 rounded-lg p-4 shadow-lg mt-2 opacity-100 pointer-events-auto min-w-[230px]'
+        class='bg-gray-800 border border-gray-700 rounded-lg p-4 shadow-lg mt-2 opacity-100 pointer-events-auto min-w-57.5'
         onSubmit={handleSubmit}
       >
         <h3 class='text-xs font-bold text-gray-200 mb-3'>
@@ -224,7 +224,7 @@ export const EventLoop: Component<Props> = props => {
   return (
     <div class='bg-[#0d1117]/90 text-white p-4 font-sans h-full grow min-w-7xl w-full'>
       <div class='max-w-7xl mx-auto relative'>
-        <DottedBackground fillColor='white' />
+        <DottedBackground />
         <div class='flex justify-between items-center mb-8'>
           <h1 class='text-2xl font-bold text-gray-200'>
             Event Loop Visualization
@@ -246,7 +246,7 @@ export const EventLoop: Component<Props> = props => {
           </div>
         </div>
 
-        <div class='flex flex-col lg:flex-row gap-6 h-[600px]'>
+        <div class='flex flex-col lg:flex-row gap-6 h-150'>
           {/* Left Column: Code & Console */}
           <div class='w-full lg:w-1/3 flex flex-col gap-4 h-full'>
             {/* Code Editor */}
@@ -426,7 +426,7 @@ export const EventLoop: Component<Props> = props => {
                   <div class='flex-1 grid grid-cols-1 lg:grid-cols-2 items-start gap-1 overflow-auto px-2 no-scrollbar'>
                     <For each={microtaskQueue()}>
                       {item => (
-                        <div class='min-w-[100px] bg-orange-900/30 border border-orange-500/50 text-orange-400 p-1.5 rounded text-center font-mono text-[10px] shadow-[0_0_10px_rgba(249,115,22,0.2)] animate-in fade-in slide-in-from-right-2 duration-300'>
+                        <div class='min-w-25 bg-orange-900/30 border border-orange-500/50 text-orange-400 p-1.5 rounded text-center font-mono text-[10px] shadow-[0_0_10px_rgba(249,115,22,0.2)] animate-in fade-in slide-in-from-right-2 duration-300'>
                           {item.name}
                         </div>
                       )}
@@ -447,7 +447,7 @@ export const EventLoop: Component<Props> = props => {
                   <div class='flex-1 grid grid-cols-1 lg:grid-cols-2 items-start gap-1 overflow-auto p-2 no-scrollbar'>
                     <For each={macrotaskQueue()}>
                       {item => (
-                        <div class='min-w-[100px] bg-yellow-900/30 border border-yellow-500/50 text-yellow-400 p-1.5 rounded text-center font-mono text-[10px] shadow-[0_0_10px_rgba(234,179,8,0.2)] animate-in fade-in slide-in-from-right-2 duration-300'>
+                        <div class='min-w-25 bg-yellow-900/30 border border-yellow-500/50 text-yellow-400 p-1.5 rounded text-center font-mono text-[10px] shadow-[0_0_10px_rgba(234,179,8,0.2)] animate-in fade-in slide-in-from-right-2 duration-300'>
                           {item.name}
                         </div>
                       )}

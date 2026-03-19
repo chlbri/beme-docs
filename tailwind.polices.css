@@ -6,3 +6,12 @@
   --text-2xs: 0.625rem;
   --text-2xs--line-height: 0.8rem;
 }
+
+code {
+  font-family: 'Fira Code', monospace;
+  /* Ensure ligatures are enabled across browsers */
+  font-variant-ligatures: contextual; /* For CodeMirror and general support */
+  -moz-font-feature-settings: 'calt'; /* Firefox */
+  -webkit-font-variant-ligatures: common-ligatures; /* Safari */
+  font-variant-ligatures: common-ligatures;
+}
