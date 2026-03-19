@@ -87,7 +87,7 @@ export const AnimationCard: Component<AnimationCardProps> = props => {
         </div>
 
         {/* ── Control buttons ── */}
-        <div class='flex items-center gap-2 flex-wrap'>
+        <div class='flex items-center justify-center gap-2 flex-wrap'>
           <button
             type='button'
             onClick={handleStart}

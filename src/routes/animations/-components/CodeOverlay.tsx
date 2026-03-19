@@ -1,15 +1,15 @@
-import { createHotkey } from '@tanstack/solid-hotkeys';
-import {
-  createSignal,
-  onCleanup,
-  onMount,
-  Show,
-  type Component,
-} from 'solid-js';
+import { Show, type Component, type Setter } from 'solid-js';
 import { cn } from '~cn/utils';
-import { generateCode, isDefaultTailwind } from '../-helpers';
-import type { AnimationData, CodeTab } from '../types';
-import { CheckIcon, CodeIcon, CopyIcon, CssLogo, XIcon } from './icons';
+import type { AnimationData } from '../types';
+import { useCodeOverlayHook } from './CodeOverlay.hooks';
+import {
+  CheckIcon,
+  CodeIcon,
+  CopyIcon,
+  CssLogo,
+  ReactLogo,
+  XIcon,
+} from './icons';
 
 type CodeOverlayProps = {
   animation: AnimationData;
@@ -17,31 +17,24 @@ type CodeOverlayProps = {
 };
 
 export const CodeOverlay: Component<CodeOverlayProps> = props => {
-  const [activeTab, setActiveTab] = createSignal<CodeTab>('jsx');
-  const [copied, setCopied] = createSignal(false);
-  const code = generateCode(props.animation, activeTab);
-  const showCssTab = () =>
-    !isDefaultTailwind(props.animation.animationClass);
-  createHotkey('C', props.onClose);
-  onMount(() => (document.body.style.overflow = 'hidden'));
-  onCleanup(() => (document.body.style.overflow = ''));
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(code());
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // clipboard API unavailable — silently ignore
-    }
-  };
+  const {
+    is,
+    indicatorStyle,
+    setJsxTabRef,
+    setCssTabRef,
+    setTabsBarRef,
+    handleCopy,
+    showCssTab,
+    code,
+    copied,
+    setActiveTab,
+    onClose,
+  } = useCodeOverlayHook(props);
 
   return (
     <article
       class='fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#2c2416]/50 backdrop-blur-sm'
-      onClick={e => {
-        if (e.target === e.currentTarget) props.onClose();
-      }}
+      onClick={onClose}
     >
       {/* Panel */}
       <div class='relative w-full max-w-3xl h-[85vh] flex flex-col rounded-xl border border-[#d4c9b0] bg-[#faf8f3] shadow-2xl overflow-hidden'>
@@ -67,35 +60,53 @@ export const CodeOverlay: Component<CodeOverlayProps> = props => {
         </div>
 
         {/* ── Tabs ── */}
-        <div class='shrink-0 flex items-end gap-0.5 px-5 pt-3 pb-0 bg-[#f5f0e8] border-b border-[#d4c9b0]'>
-          <button
-            type='button'
-            onClick={() => setActiveTab('jsx')}
-            class={cn(
-              'flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium rounded-t-md border-b-2 transition-colors',
-              activeTab() === 'jsx'
-                ? 'border-cyan-800 text-cyan-800 bg-[#faf8f3]'
-                : 'border-transparent text-[#8a7a62] hover:text-[#2c2416] hover:bg-[#ece7da]',
-            )}
+        <div class='shrink-0 relative bg-[#f5f0e8] border-b border-[#d4c9b0]'>
+          {/* Tab buttons row */}
+          <div
+            ref={setTabsBarRef as Setter<HTMLDivElement | null>}
+            class='flex items-end gap-0.5 px-5 pt-3 pb-0'
           >
-            JSX
-          </button>
-
-          <Show when={showCssTab()}>
             <button
+              ref={setJsxTabRef as Setter<HTMLButtonElement | null>}
               type='button'
-              onClick={() => setActiveTab('css')}
+              onClick={() => setActiveTab('jsx')}
               class={cn(
-                'flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium rounded-t-md border-b-2 transition-colors',
-                activeTab() === 'css'
-                  ? 'border-[#b06a2a] text-[#7a4818] bg-[#faf8f3] font-bold'
-                  : 'border-transparent text-yellow-800/70 hover:text-[#2c2416] hover:bg-[#ece7da]',
+                'flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium rounded-t-md transition-colors duration-200',
+                is('jsx')
+                  ? 'text-cyan-700 bg-[#faf8f3]'
+                  : 'text-[#8a7a62] hover:text-cyan-700 hover:bg-[#ece7da]',
               )}
             >
-              <CssLogo />
-              CSS
+              <ReactLogo />
+              JSX
             </button>
-          </Show>
+
+            <Show when={showCssTab()}>
+              <button
+                ref={setCssTabRef as Setter<HTMLButtonElement | null>}
+                type='button'
+                onClick={() => setActiveTab('css')}
+                class={cn(
+                  'flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium rounded-t-md transition-colors duration-200',
+                  is('css')
+                    ? 'text-[#7a4818] bg-[#faf8f3] font-bold'
+                    : 'text-yellow-800/70 hover:text-[#2c2416] hover:bg-[#ece7da]',
+                )}
+              >
+                <CssLogo />
+                CSS
+              </button>
+            </Show>
+          </div>
+
+          {/* Sliding indicator */}
+          <div
+            class='absolute bottom-0 h-0.5 transition-all duration-200 ease-in-out'
+            style={{
+              ...indicatorStyle(),
+              'background-color': is('css') ? '#b06a2a' : '#0e7490',
+            }}
+          />
         </div>
 
         {/* ── Code block ── */}
