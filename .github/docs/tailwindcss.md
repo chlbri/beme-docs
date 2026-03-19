@@ -1,7 +1,7 @@
 # Guide Tailwind CSS v4 (pnpm + Vite + SolidJS)
 
-Ce document explique comment installer et configurer Tailwind CSS v4 dans ce
-projet (pnpm + Vite + SolidJS). Les instructions utilisent la nouvelle
+Ce document explique comment installer et configurer Tailwind CSS v4 dans
+ce projet (pnpm + Vite + SolidJS). Les instructions utilisent la nouvelle
 approche CSS-first de Tailwind v4.
 
 ## 1) Installer les dépendances
@@ -24,7 +24,8 @@ Notes :
 Tailwind v4 utilise une approche **CSS-first** : la configuration se fait
 directement dans votre fichier CSS avec la directive `@theme`.
 
-Créez ou modifiez votre fichier CSS principal (par exemple `tailwind.css`) :
+Créez ou modifiez votre fichier CSS principal (par exemple `tailwind.css`)
+:
 
 ```css
 @import 'tailwindcss';
@@ -62,7 +63,8 @@ Créez ou modifiez votre fichier CSS principal (par exemple `tailwind.css`) :
 
 Remarques importantes :
 
-- **Plus besoin de `tailwind.config.js` ou `.ts`** : tout se configure en CSS
+- **Plus besoin de `tailwind.config.js` ou `.ts`** : tout se configure en
+  CSS
 - Les couleurs utilisent le format `oklch` pour un meilleur rendu
 - Les keyframes s'ajoutent directement dans `@theme`
 - Le `content` (chemins de fichiers) est automatiquement détecté par Vite
@@ -83,7 +85,8 @@ export default defineConfig({
 
 ## 4) Importer le CSS dans votre application
 
-Importez le fichier CSS dans votre point d'entrée (par ex. `src/index.tsx`) :
+Importez le fichier CSS dans votre point d'entrée (par ex. `src/index.tsx`)
+:
 
 ```ts
 import './tailwind.css';
@@ -114,7 +117,7 @@ pnpm run dev
 - Dans une page ou un composant `.tsx`, ajoutez :
 
 ```tsx
-<h1 class="text-3xl font-bold underline">Hello Tailwind v4</h1>
+<h1 class='text-3xl font-bold underline'>Hello Tailwind v4</h1>
 ```
 
 - Démarrez le dev server et vérifiez que le style est appliqué.
@@ -158,13 +161,13 @@ pnpm run dev
 
 ## 8) Debug / FAQ rapide
 
-- **Classes non générées** : Tailwind v4 détecte automatiquement les fichiers
-  via le plugin Vite, pas besoin de configurer `content`
+- **Classes non générées** : Tailwind v4 détecte automatiquement les
+  fichiers via le plugin Vite, pas besoin de configurer `content`
 - **Cache / build stale** : relancez le serveur `pnpm run dev`
 - **Erreurs de syntaxe** : vérifiez que vous utilisez bien la syntaxe v4
   (`@theme`, `@utility`, etc.)
-- **Animations ne fonctionnent pas** : assurez-vous que les `@keyframes` sont
-  bien dans le bloc `@theme`
+- **Animations ne fonctionnent pas** : assurez-vous que les `@keyframes`
+  sont bien dans le bloc `@theme`
 
 ## 9) Migration depuis Tailwind v3
 
@@ -181,8 +184,8 @@ Si vous migrez depuis v3 :
 
 - Ce projet utilise `pnpm` et `vite` — la configuration ci‑dessus est
   compatible et testée localement.
-- Toutes les animations personnalisées (accordion, collapsible, caret-blink)
-  sont définies dans `tailwind.css`
+- Toutes les animations personnalisées (accordion, collapsible,
+  caret-blink) sont définies dans `tailwind.css`
 - Le thème dark utilise une variante personnalisée avec Kobalte UI
 - Si vous avez des workflows CI qui installent en mode offline, utilisez
   `pnpm install --offline`

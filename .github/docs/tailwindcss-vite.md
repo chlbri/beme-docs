@@ -81,7 +81,7 @@ export default {
 ```tsx
 function Button() {
   return (
-    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
       Cliquez-moi
     </button>
   );
@@ -123,7 +123,7 @@ export default {
 ### Variants responsives
 
 ```tsx
-<div className="text-center md:text-left lg:text-right">
+<div className='text-center md:text-left lg:text-right'>
   Texte responsive
 </div>
 ```
@@ -131,7 +131,7 @@ export default {
 ### Variants d'état
 
 ```tsx
-<button className="bg-gray-200 hover:bg-gray-300 focus:bg-blue-500 active:bg-blue-600">
+<button className='bg-gray-200 hover:bg-gray-300 focus:bg-blue-500 active:bg-blue-600'>
   Bouton interactif
 </button>
 ```
@@ -183,8 +183,8 @@ export default {
 // Compatible directement avec SolidJS
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-gray-800">
+    <div className='min-h-screen bg-gray-100 flex items-center justify-center'>
+      <h1 className='text-4xl font-bold text-gray-800'>
         Hello SolidJS + Tailwind
       </h1>
     </div>
