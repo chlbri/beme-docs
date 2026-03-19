@@ -1,7 +1,7 @@
 import { createHotkey } from '@tanstack/solid-hotkeys';
 import { createEffect, createSignal, onCleanup, onMount } from 'solid-js';
 import { generateCode, isDefaultTailwind } from '../-helpers';
-import { CodeTab } from '../types';
+import { CodeTab } from '../-types';
 import { CodeOverlayProps } from './CodeOverlay.types';
 
 export const useCodeOverlayHook = (props: CodeOverlayProps) => {

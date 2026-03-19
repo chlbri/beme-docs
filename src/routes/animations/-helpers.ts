@@ -1,5 +1,5 @@
 import { Accessor } from 'solid-js';
-import { AnimationData } from './types';
+import { AnimationData } from './-types';
 
 /** Tailwind's built-in animate-* utilities that ship without any custom CSS */
 const TAILWIND_DEFAULT_ANIMATIONS = new Set([

@@ -1,6 +1,6 @@
 import { Show, type Component, type Setter } from 'solid-js';
 import { cn } from '~cn/utils';
-import type { AnimationData } from '../types';
+import type { AnimationData } from '../-types';
 import { useCodeOverlayHook } from './CodeOverlay.hooks';
 import {
   CheckIcon,

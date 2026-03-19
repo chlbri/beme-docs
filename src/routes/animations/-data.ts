@@ -1,4 +1,4 @@
-import { AnimationData } from './types';
+import { AnimationData } from './-types';
 
 export const animationsData: AnimationData[] = [
   {

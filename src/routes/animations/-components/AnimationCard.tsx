@@ -1,7 +1,7 @@
 import { Show, type Component } from 'solid-js';
 import { cn } from '~cn/utils';
 import { BUTTON_CLASSES } from '../-constants';
-import type { AnimationData } from '../types';
+import type { AnimationData } from '../-types';
 import { useAnimationCardHook } from './AnimationCard.hooks';
 import { CodeOverlay } from './CodeOverlay';
 import { CodeIcon } from './icons';

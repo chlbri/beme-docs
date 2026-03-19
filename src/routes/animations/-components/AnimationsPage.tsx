@@ -2,7 +2,7 @@ import { For, Show, type Component } from 'solid-js';
 import { MultiText } from '~/globals/ui/molecules';
 import { cn } from '~cn/utils';
 import { animationsData } from '../-data';
-import type { AnimationData } from '../types';
+import type { AnimationData } from '../-types';
 import { AnimationCard } from './AnimationCard';
 import { useAnimationsPageHook } from './AnimationsPage.hooks';
 

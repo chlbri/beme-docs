@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js';
 import { ANIMATION_TYPES } from '../-constants';
-import { AnimationData, AnimationType } from '../types';
+import { AnimationData, AnimationType } from '../-types';
 
 export const useAnimationsPageHook = (...data: AnimationData[]) => {
   const anims = new Set(ANIMATION_TYPES);

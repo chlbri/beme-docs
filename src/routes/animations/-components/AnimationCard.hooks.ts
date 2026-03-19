@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js';
 import { isOverFlowed } from '~/globals/ui/signals/overflow';
-import type { AnimationState } from '../types';
+import type { AnimationState } from '../-types';
 
 export const useAnimationCardHook = (id: string) => {
   const [state, setState] = createSignal<AnimationState>('playing');
