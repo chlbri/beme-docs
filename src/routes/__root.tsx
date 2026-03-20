@@ -1,5 +1,3 @@
-/// <reference types="vite/client" />
-
 import {
   createRootRoute,
   HeadContent,
@@ -12,7 +10,8 @@ import { Navigation } from '~/globals/ui/organisms/Navigation';
 import seo from '~seo';
 import { BreadCrumbs, Footer } from '~ui/molecules';
 import { DottedBackground } from '~ui/organisms/DottedBackground';
-import appCss from '../../tailwind.css?url';
+// @ts-expect-error - Vite will replace this with the actual path to the CSS file
+import appCss from '#tailwind';
 
 export const Route = createRootRoute({
   head: () => ({
@@ -39,7 +38,7 @@ export const Route = createRootRoute({
 
         <body class='flex flex-col min-h-screen p-5'>
           <HeadContent />
-          <DottedBackground />
+          <DottedBackground dotColor='#582ab6' />
           <Navigation
             logo='beme.docs'
             links={[

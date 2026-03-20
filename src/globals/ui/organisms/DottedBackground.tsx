@@ -1,6 +1,18 @@
 import { createEffect, createSignal } from 'solid-js';
 
-export const DottedBackground = () => {
+type DottedBackgroundProps = {
+  dotColor?: string;
+  dotSize?: number;
+  gap?: number;
+  opacity?: number;
+};
+
+export const DottedBackground = ({
+  dotColor = '#f97316',
+  dotSize = 2,
+  gap = 40,
+  opacity = 0.15,
+}: DottedBackgroundProps) => {
   const [canvasRef, setCanvasRef] = createSignal<HTMLCanvasElement>();
   const [context, setContext] =
     createSignal<CanvasRenderingContext2D | null>(null);
@@ -13,13 +25,6 @@ export const DottedBackground = () => {
 
     setContext(ctx);
 
-    // Set canvas size to window size
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      drawDots();
-    };
-
     const drawDots = () => {
       const ctx = context();
       if (!ctx) return;
@@ -28,22 +33,25 @@ export const DottedBackground = () => {
       ctx.fillStyle = 'transparent';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Draw dots
-      const dotRadius = 2;
-      const gap = 40;
-
-      ctx.fillStyle = '#f97316';
-      ctx.globalAlpha = 0.15;
+      ctx.fillStyle = dotColor;
+      ctx.globalAlpha = opacity;
 
       for (let x = 0; x < canvas.width; x += gap) {
         for (let y = 0; y < canvas.height; y += gap) {
           ctx.beginPath();
-          ctx.arc(x, y, dotRadius, 0, Math.PI * 2);
+          ctx.arc(x, y, dotSize, 0, Math.PI * 2);
           ctx.fill();
         }
       }
 
       ctx.globalAlpha = 1;
+    };
+
+    // Set canvas size to window size
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      drawDots();
     };
 
     window.addEventListener('resize', resizeCanvas);

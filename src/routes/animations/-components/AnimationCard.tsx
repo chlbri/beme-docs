@@ -4,7 +4,6 @@ import { BUTTON_CLASSES } from '../-constants';
 import type { AnimationData } from '../-types';
 import { useAnimationCardHook } from './AnimationCard.hooks';
 import { CodeOverlay } from './CodeOverlay';
-import { CodeIcon } from './icons';
 
 type AnimationCardProps = {
   animation: AnimationData;
@@ -71,7 +70,7 @@ export const AnimationCard: Component<AnimationCardProps> = props => {
       </div>
 
       {/* ── Card body ── */}
-      <div class='p-4'>
+      <div class='p-4 flex flex-col gap-1'>
         <h3 class='text-lg font-semibold text-gray-700 mb-1'>
           {props.animation.name}
         </h3>
@@ -134,9 +133,9 @@ export const AnimationCard: Component<AnimationCardProps> = props => {
         </div>
 
         {/* ── Meta row ── */}
-        <div class='mt-3 flex items-center gap-2 flex-wrap'>
+        <div class='mt-3 flex items-center gap-1 justify-center flex-wrap'>
           <span class='text-xs text-muted-foreground'>Duration:</span>
-          <span class='text-xs font-mono bg-muted px-2 py-0.5 rounded'>
+          <span class='text-xs font-mono bg-muted pr-2 py-0.5 rounded'>
             {props.animation.duration}s
           </span>
 
@@ -151,18 +150,18 @@ export const AnimationCard: Component<AnimationCardProps> = props => {
           >
             {props.animation.type}
           </span>
-
-          {/* View code button */}
-          <button
-            type='button'
-            onClick={() => setShowCode(true)}
-            class='ml-auto flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md border border-zinc-300 bg-zinc-50 text-zinc-600 hover:bg-zinc-900 hover:text-zinc-100 hover:border-zinc-900 transition-all duration-150 active:scale-95'
-            title='View code for React & Solid.js'
-          >
-            <CodeIcon />
-            <span>Code</span>
-          </button>
         </div>
+        {/* View code button */}
+        <button
+          type='button'
+          onClick={() => setShowCode(true)}
+          class='mx-auto mt-2 flex items-center gap-0.5 px-2.5 py-1 text-xs font-medium rounded-md border border-zinc-300 bg-zinc-50 text-zinc-600 hover:bg-zinc-800 hover:text-zinc-100 hover:border-zinc-800 transition-all duration-150 active:scale-95 cursor-pointer'
+          title='View code usage'
+        >
+          <span class=''>{'<'}</span>
+          <span>Code</span>
+          <span class=''>{'/>'}</span>
+        </button>
       </div>
     </article>
   );

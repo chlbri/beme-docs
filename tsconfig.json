@@ -16,6 +16,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
+      "#tailwind": ["./tailwind.css?url"],
       "~/*": ["./src/*"],
       "~features/*": ["./src/features/*"],
       "~signals/*": ["src/globals/ui/signals/*"],
