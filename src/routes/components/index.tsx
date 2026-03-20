@@ -1,99 +1,41 @@
-import { createFileRoute, useNavigate } from '@tanstack/solid-router';
-import { For, type Component, createSignal, Show } from 'solid-js';
+import { throttle } from '@tanstack/solid-pacer';
+import {
+  createFileRoute,
+  retainSearchParams,
+} from '@tanstack/solid-router';
+import { Search } from 'lucide-solid';
+import { For, Show } from 'solid-js';
+import * as v from 'valibot';
 import { cn } from '~cn/utils';
-import { ArrowRight, Search } from 'lucide-solid';
+import { ComponentCard } from './-components/card';
+import { COMPONENTS } from './-components/data';
 
-interface ComponentItem {
-  id: string;
-  name: string;
-  description: string;
-  path: string;
-}
-
-const COMPONENTS: ComponentItem[] = [
-  {
-    id: 'border-hover',
-    name: 'Border Hover',
-    description:
-      'An elegant component with a beautiful border hover effect.',
-    path: '/components/border-hover',
-  },
-  {
-    id: 'graphic-charter-1',
-    name: 'Graphic Charter 1',
-    description:
-      'A comprehensive graphic charter showcasing color palettes, typography systems, and brand design guidelines.',
-    path: '/components/graphic-charter-1',
-  },
-  {
-    id: 'login-beauty-1',
-    name: 'Login Beauty 1',
-    description:
-      'A sophisticated login component with modern design and smooth interactions.',
-    path: '/components/login_beauty1',
-  },
-  {
-    id: 'nav-beauty-hover',
-    name: 'Navigation Beauty Hover',
-    description:
-      'An attractive navigation component featuring interactive hover effects.',
-    path: '/components/nav_beauty_hover',
-  },
-  {
-    id: 'tooltip',
-    name: 'Tooltip',
-    description:
-      'A versatile tooltip component that provides informative hover effects.',
-    path: '/components/tooltip',
-  },
-];
-
-const ComponentCard: Component<{ item: ComponentItem }> = props => {
-  const navigate = useNavigate();
-
-  return (
-    <article
-      class={cn(
-        'group border border-gray-200 dark:border-gray-700 rounded-lg p-6',
-        'bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg',
-        'transition-all duration-300 cursor-pointer',
-        'hover:border-orange-400 dark:hover:border-orange-400/50',
-      )}
-      onClick={() => navigate({ to: props.item.path })}
-      role='button'
-      tabIndex={0}
-      onKeyDown={e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          navigate({ to: props.item.path });
-        }
-      }}
-    >
-      <div class='flex items-start justify-between mb-4'>
-        <h3 class='text-lg font-semibold text-gray-900 dark:text-white group-hover:text-orange-400 transition-colors'>
-          {props.item.name}
-        </h3>
-        <ArrowRight
-          size={20}
-          class='text-gray-400 group-hover:text-orange-400 group-hover:translate-x-1 transition-all'
-        />
-      </div>
-
-      <p class='text-sm text-gray-600 dark:text-gray-400 leading-relaxed'>
-        {props.item.description}
-      </p>
-
-      <div class='mt-4 pt-4 border-t border-gray-100 dark:border-gray-800'>
-        <span class='text-xs font-medium text-orange-400'>
-          View Component →
-        </span>
-      </div>
-    </article>
-  );
-};
+const validateSearch = v.object({
+  q: v.optional(v.string(), ''),
+});
 
 export const Route = createFileRoute('/components/')({
+  validateSearch,
+  search: { middlewares: [retainSearchParams(['q'])] },
   component: () => {
-    const [searchQuery, setSearchQuery] = createSignal('');
+    const search = Route.useSearch();
+    const navigate = Route.useNavigate();
+    const searchQuery = () => search().q;
+
+    const setSearchQuery = throttle(
+      (q: string) => {
+        if (q === searchQuery()) return;
+
+        return navigate({
+          search: () => ({ q }),
+          // replace: true,
+        });
+      },
+      {
+        wait: 300,
+        key: 'SEARCH_COMPONENTS',
+      },
+    );
 
     const filteredComponents = () => {
       const query = searchQuery().toLowerCase();
@@ -116,7 +58,7 @@ export const Route = createFileRoute('/components/')({
             components built with SolidJS and Tailwind CSS.
           </p>
 
-          <div class='relative max-w-md'>
+          <div class='relative max-w-md mx-auto'>
             <Search class='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5' />
             <input
               type='text'
@@ -147,9 +89,7 @@ export const Route = createFileRoute('/components/')({
           }
         >
           <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            <For each={filteredComponents()}>
-              {item => <ComponentCard item={item} />}
-            </For>
+            <For each={filteredComponents()} children={ComponentCard} />
           </div>
         </Show>
       </div>
